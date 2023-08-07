@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -39,6 +42,19 @@
                 <input type="password" id="senha-cadastro" name="senha-cadastro" required>
                 <label for="confirma-senha">Confirme a senha:</label>
                 <input type="password" id="confirma-senha" name="confirma-senha" required>
+                <div class="captcha-container">
+                    <div class="captcha-image-container">
+                        <img src="../captcha.php" alt="Imagem do Captcha" class="captcha-image">
+                    </div>
+                    <div class="captcha-input-container">
+                        <input type="text" name="captcha" class="captcha-input" placeholder="Digite o Captcha" required>
+                    </div>
+                </div>
+
+
+
+
+
                 <input type="submit" value="Cadastrar">
             </form>
         </div>

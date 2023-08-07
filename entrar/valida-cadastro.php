@@ -4,12 +4,17 @@ include "../conectar-bd.php";
 
 $erros = [];
 
-$nome = $_POST['nome'];
-$email_cadastro = $_POST['email-cadastro'];
-$senha_cadastro = $_POST['senha-cadastro'];
-$confirma_senha = $_POST['confirma-senha'];
+if (isset($_POST['nome']) || isset($_POST['email-cadastro']) || isset($_POST['senha-cadastro']) || isset($_POST['confirma-senha']) || isset($_POST['captcha'])) {
 
-if (empty($nome) || empty($email_cadastro) || empty($senha_cadastro) || empty($confirma_senha)) {
+    $nome = $_POST['nome'];
+    $email_cadastro = $_POST['email-cadastro'];
+    $senha_cadastro = $_POST['senha-cadastro'];
+    $confirma_senha = $_POST['confirma-senha'];
+    $captcha = $_POST['captcha'];
+
+}
+
+if (empty($nome) || empty($email_cadastro) || empty($senha_cadastro) || empty($confirma_senha) || empty($captcha)) {
     $erros[] = "Todos os campos devem ser preenchidos.";
 }
 
@@ -31,6 +36,8 @@ if (empty($erros)) {
     $senha_crip = md5($senha_cadastro);
     $inserir_usuario = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email_cadastro', '$senha_crip')";
 
+
+
     if ($con->query($inserir_usuario) === TRUE) {
         header("Location: entrar.php?mensagem=success"); // Redireciona para página de entrar.php com mensagem de sucesso
         exit();
@@ -38,9 +45,13 @@ if (empty($erros)) {
         header("Location: entrar.php?mensagem=error"); // Redireciona para página de entrar.php com mensagem de erro
         exit();
     }
+
+
 } else {
     echo "Erro geral";
     exit();
 }
+
+
 
 ?>
