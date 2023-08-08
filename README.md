@@ -26,15 +26,6 @@ Eu adoraria receber contribuições da comunidade! Se você deseja contribuir co
 3. Faça as alterações e melhorias desejadas.
 4. Envie um pull request.
 
-## Instalação Local (Apenas para Desenvolvedores)
-
-Se você quiser executar o projeto localmente, siga estas etapas:
-
-1. Clone este repositório: `git clone https://github.com/HeloSilvaC/Cozinha_do_dia.git`
-2. Acesse o diretório do projeto: `cd Cozinha_do_dia`
-3. Instale as dependências: `npm install`
-4. Inicie o servidor de desenvolvimento: `npm start`
-
 ## Contato
 
 Se você tiver alguma dúvida, sugestão ou quiser entrar em contato, você pode:
