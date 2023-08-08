@@ -50,11 +50,6 @@ session_start();
                         <input type="text" name="captcha" class="captcha-input" placeholder="Digite o Captcha" required>
                     </div>
                 </div>
-
-
-
-
-
                 <input type="submit" value="Cadastrar">
             </form>
         </div>
@@ -91,8 +86,10 @@ session_start();
 
             if (mensagem === "success") {
                 alert("Usuário inserido com sucesso!");
+                history.replaceState(null, null, 'entrar.php'); // Remove o parâmetro 'mensagem' da URL
             } else if (mensagem === "error") {
-                alert("Erro ao inserir usuário.");
+                alert("Erro ao inserir usuário!");
+                history.replaceState(null, null, 'entrar.php'); // Remove o parâmetro 'mensagem' da URL
             }
         }
     </script>

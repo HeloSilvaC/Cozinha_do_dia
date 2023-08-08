@@ -1,12 +1,11 @@
-<?
+<?php
 session_start();
 
 // Verificar se o usuário está logado
-if (!isset($_SESSION["estaLogado"]) || $_SESSION["estaLogado"] !== true) {
-    header("Location: ../entrar/entrar.php");
-    exit();
-}
+$estaLogado = isset($_SESSION["estaLogado"]) && $_SESSION["estaLogado"];
+$nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -40,6 +39,7 @@ if (!isset($_SESSION["estaLogado"]) || $_SESSION["estaLogado"] !== true) {
         <!-- Contêiner do perfil com opções de login/cadastro -->
         <div class="perfil-container">
             <i class="fas fa-user-circle" tabindex="0"></i>
+            <p class="bem-vindo-msg"></p>
             <div class="opcoes-perfil">
                 <ul>
                     <li><a href="../entrar/entrar.php">Entrar</a></li>
@@ -52,25 +52,25 @@ if (!isset($_SESSION["estaLogado"]) || $_SESSION["estaLogado"] !== true) {
     <div id="receitas">
         <!-- Cada card é um link para a página da receita -->
         <a href="pagina_da_receita1.html" class="card">
-            <img src="/Imagens/Panqueca.png" alt="Panqueca">
+            <img src="../Imagens/Panqueca.png" alt="Panqueca">
             <div class="card-text">
                 <h1>PANQUECA AMERICANA</h1>
             </div>
         </a>
         <a href="pagina_da_receita2.html" class="card">
-            <img src="/Imagens/ovo_frito.png" alt="Ovo frito">
+            <img src="../Imagens/ovo_frito.png" alt="Ovo frito">
             <div class="card-text">
                 <h1>OVO FRITO</h1>
             </div>
         </a>
         <a href="pagina_da_receita4.html" class="card">
-            <img src="/Imagens/guacamole.png" alt="Guacamole">
+            <img src="../Imagens/guacamole.png" alt="Guacamole">
             <div class="card-text">
                 <h1>GUACAMOLE</h1>
             </div>
         </a>
         <a href="pagina_da_receita3.html" class="card">
-            <img src="/Imagens/salada_de_frutas.png" alt="Salada de frutas">
+            <img src="../Imagens/salada_de_frutas.png" alt="Salada de frutas">
             <div class="card-text">
                 <h1>SALADA DE FRUTAS</h1>
             </div>
@@ -80,6 +80,52 @@ if (!isset($_SESSION["estaLogado"]) || $_SESSION["estaLogado"] !== true) {
     <!-- Seção do Rodapé -->
     <footer class="footer">
     </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mova a declaração do perfilContainer acima
+            const perfilContainer = document.querySelector('.perfil-container');
+            // Verificar se o usuário está logado
+            const estaLogado = <?php echo $estaLogado ? 'true' : 'false'; ?>;
+            const nomeUsuario = "<?php echo $nomeUsuario; ?>";
+
+            const opcoesPerfil = perfilContainer.querySelector('.opcoes-perfil ul');
+
+            if (estaLogado) {
+
+                perfilContainer.style.cursor = 'pointer';
+                perfilContainer.style.marginRight = '10px';
+
+                // Aplicar estilos ao ícone de perfil
+                const iconUser = perfilContainer.querySelector('.fas.fa-user-circle');
+                iconUser.style.fontSize = '35px'; // Tamanho mais razoável
+                iconUser.style.color = '#fff';
+                iconUser.style.transition = 'box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out';
+                iconUser.style.borderRadius = '10%';
+                const bemVindoMsg = document.createElement('p');
+                bemVindoMsg.textContent = `Bem-vindo, ${nomeUsuario}!`;
+                bemVindoMsg.style.fontFamily = 'Roboto Mono, monospace';
+                bemVindoMsg.style.fontWeight = 'bold';
+                bemVindoMsg.style.fontSize = '15px';
+                bemVindoMsg.style.textAlign = 'center';
+                bemVindoMsg.style.color = '#fff';
+                perfilContainer.appendChild(bemVindoMsg);
+
+                opcoesPerfil.innerHTML = `
+            <li><a href="../cadastrar-receita/cadastrar-receita.php">Cadastrar Receita</a></li>
+            <li><a href="../logout.php">Sair</a></li>
+
+
+                `;
+            } else {
+                opcoesPerfil.innerHTML = `
+                    <li><a href="../entrar/entrar.php">Entrar</a></li>
+            `;
+            }
+        });
+    </script>
+
 </body>
 
 </html>

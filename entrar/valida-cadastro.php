@@ -4,7 +4,7 @@ include "../conectar-bd.php";
 
 $erros = [];
 
-if (isset($_POST['nome']) || isset($_POST['email-cadastro']) || isset($_POST['senha-cadastro']) || isset($_POST['confirma-senha']) || isset($_POST['captcha'])) {
+if (isset($_POST['nome'], $_POST['email-cadastro'], $_POST['senha-cadastro'], $_POST['confirma-senha'], $_POST['captcha'])) {
 
     $nome = $_POST['nome'];
     $email_cadastro = $_POST['email-cadastro'];
@@ -32,26 +32,27 @@ if ($resultado_email->num_rows > 0) {
         echo $erro . "<br>";
     }
 }
+
 if (empty($erros)) {
-    $senha_crip = md5($senha_cadastro);
-    $inserir_usuario = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email_cadastro', '$senha_crip')";
+    $senha_hash = password_hash($senha_cadastro, PASSWORD_BCRYPT); // Criptografa a senha usando Bcrypt
 
+    $inserir_usuario = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email_cadastro', '$senha_hash')";
 
-
-    if ($con->query($inserir_usuario) === TRUE) {
-        header("Location: entrar.php?mensagem=success"); // Redireciona para página de entrar.php com mensagem de sucesso
-        exit();
+    session_start();
+    if ($_POST["captcha"] == $_SESSION["palavra"]) {
+        if ($con->query($inserir_usuario) === TRUE) {
+            header("Location: entrar.php?mensagem=success"); // Redireciona para página de entrar.php com mensagem de sucesso
+            exit();
+        } else {
+            header("Location: entrar.php?mensagem=error"); // Redireciona para página de entrar.php com mensagem de erro
+            exit();
+        }
     } else {
-        header("Location: entrar.php?mensagem=error"); // Redireciona para página de entrar.php com mensagem de erro
-        exit();
+        echo "<h1>Você não acertou o captcha!</h1>";
+        echo "<a href='entrar.php'></a>";
     }
-
-
 } else {
     echo "Erro geral";
     exit();
 }
-
-
-
 ?>

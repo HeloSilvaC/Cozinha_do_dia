@@ -17,12 +17,14 @@ body {
 }
 
 /* Estilos para o cabeçalho */
+/* Estilos para o cabeçalho */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #DF901A;
-    padding: 5px;
+    padding: 20px;
+    padding-right: 0; /* Adicionei padding horizontal */
     width: auto;
     height: 80px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -34,20 +36,12 @@ body {
     color: white;
     font-family: 'Rajdhani', sans-serif;
     font-size: 64px;
-    padding-top: 10px;
     line-height: 85px;
-    text-align: left;
-    padding: 0 15px;
+    text-align: left; /* Adicionei padding à direita para separar do próximo elemento */
     transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap; 
 }
-
-/* Animação de Sombra e Escala */
-.header h1:hover {
-    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
-    transform: scale(1.01);
-}
-
 
 /* Estilos para a caixa de busca */
 #search {
@@ -57,14 +51,21 @@ body {
     border-radius: 10px;
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-right: 10px;
+    margin-right: 15px;
     font-size: 18px;
     padding: 8px 40px;
     text-align: left;
-    /* Alinha o texto do placeholder à esquerda */
-    width: 100%;
+    width: auto; /* Removi a largura fixa para se ajustar ao conteúdo */
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
+
+/* Animação de Sombra e Escala */
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
 
 /* Estilos para o ícone de busca */
 .fa-search {
@@ -174,7 +175,6 @@ body {
 
 /* Estilos para o rodapé da página */
 .footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -182,14 +182,19 @@ body {
     padding: 10px;
     text-align: center;
     color: white;
+    margin-top: 1px;
 }
 
 
 /* Estilos para o contêiner do ícone de perfil e caixa de opções */
 .perfil-container {
+    display: flex;
+    align-items: center;
     position: relative;
     cursor: pointer;
-    margin-right: 25px;
+    margin-right: px;
+    justify-content: flex-end;
+    margin-right: 40px;
 }
 
 /* Estilos para o ícone de perfil */
