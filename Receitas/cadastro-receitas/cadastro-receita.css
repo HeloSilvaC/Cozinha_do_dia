@@ -1,0 +1,201 @@
+body {
+    background-color: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DF901A;
+    padding: 5px;
+    width: auto;
+    height: 80px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+/* Estilos para o título do cabeçalho */
+.header h1 {
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 64px;
+    padding-top: 10px;
+    line-height: 85px;
+    text-align: center;
+    padding: 0 15px;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Animação de Sombra e Escala */
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+/* Estilo do Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Estilo do Formulário */
+.cadastro-container {
+    width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-container h2 {
+    color: #DF901A;
+    font-family: 'Horizon', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input[type="submit"],
+#btn-adicionar-ingrediente,
+#btn-adicionar-passo {
+    font-size: 16px;
+    background-color: #DF901A;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-bottom: 8px;
+}
+
+input[type="submit"]:hover,
+#btn-adicionar-ingrediente:hover,
+#btn-adicionar-passo:hover {
+    background-color: #E87506;
+}
+
+/* Estilo para o campo de ingrediente */
+.ingrediente {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingrediente input[type="text"],
+.ingrediente input[type="number"],
+.ingrediente select {
+    margin-right: 10px;
+}
+
+.ingrediente button {
+    padding: 5px 10px;
+    background-color: #DF901A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Efeito de profundidade */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ingrediente button:hover {
+    background-color: #E87506;
+    transform: scale(1.1);
+}
+
+/* Estilizando o ícone de lixeira do campo de ingrediente */
+.ingrediente button i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+/* Estilo para os passos do modo de preparo */
+#modo-preparo-lista {
+    margin-top: 10px;
+}
+
+#modo-preparo-lista li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#modo-preparo-lista li textarea {
+    margin-right: 10px;
+    flex: 1;
+}
+
+#modo-preparo-lista li button {
+    padding: 5px 10px;
+    background-color: #DF901A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Efeito de profundidade */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modo-preparo-lista li button:hover {
+    background-color: #E87506;
+    transform: scale(1.1);
+}
+
+/* Estilizando o ícone de lixeira do modo de preparo */
+#modo-preparo-lista li button i {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+/* Estilo para o rodapé */
+.footer {
+    margin-top: 10px;
+    background-color: #DF901A;
+    padding: 15px;
+    color: white;
+}
