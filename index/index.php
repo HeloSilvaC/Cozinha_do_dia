@@ -1,11 +1,11 @@
 <?php
+// Inicia a sessão
 session_start();
 
-// Verificar se o usuário está logado
+// Verifica se o usuário está logado
 $estaLogado = isset($_SESSION["estaLogado"]) && $_SESSION["estaLogado"];
 $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,8 +17,9 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
     <!-- Links para as fontes do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <!-- Link para o Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Link para o arquivo de estilo personalizado (CSS) -->
@@ -29,19 +30,27 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 <body>
     <!-- Seção do Cabeçalho -->
     <header class="header">
+        <!-- Logo e título do site -->
         <a href="index.php" style="text-decoration: none;">
             <h1 data-text="COZINHA DO DIA">COZINHA DO DIA</h1>
         </a>
+
+        <!-- Caixa de busca -->
         <div class="search-box">
             <input type="search" id="search" name="search" placeholder="Encontre uma receita...">
             <i class="fas fa-search search-icon"></i>
         </div>
+
         <!-- Contêiner do perfil com opções de login/cadastro -->
         <div class="perfil-container">
+            <!-- Ícone de perfil -->
             <i class="fas fa-user-circle" tabindex="0"></i>
+            <!-- Mensagem de boas-vindas -->
             <p class="bem-vindo-msg"></p>
+            <!-- Opções do perfil -->
             <div class="opcoes-perfil">
                 <ul>
+                    <!-- Opção para entrar -->
                     <li><a href="../entrar/entrar.php">Entrar</a></li>
                 </ul>
             </div>
@@ -50,7 +59,7 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 
     <!-- Seção de Receitas -->
     <div id="receitas">
-        <!-- Cada card é um link para a página da receita -->
+        <!-- Cards de receitas -->
         <a href="pagina_da_receita1.html" class="card">
             <img src="../Imagens/Panqueca.png" alt="Panqueca">
             <div class="card-text">
@@ -81,51 +90,49 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
     <footer class="footer">
     </footer>
 
-
+    <!-- Script JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mova a declaração do perfilContainer acima
+            // Obtém o contêiner do perfil
             const perfilContainer = document.querySelector('.perfil-container');
-            // Verificar se o usuário está logado
+            // Verifica se o usuário está logado
             const estaLogado = <?php echo $estaLogado ? 'true' : 'false'; ?>;
             const nomeUsuario = "<?php echo $nomeUsuario; ?>";
-
+            // Obtém as opções do perfil
             const opcoesPerfil = perfilContainer.querySelector('.opcoes-perfil ul');
 
             if (estaLogado) {
-
+                // Estiliza o ícone de perfil
                 perfilContainer.style.cursor = 'pointer';
-                perfilContainer.style.marginRight = '10px';
-
-                // Aplicar estilos ao ícone de perfil
                 const iconUser = perfilContainer.querySelector('.fas.fa-user-circle');
-                iconUser.style.fontSize = '35px'; // Tamanho mais razoável
+                iconUser.style.fontSize = '35px'; // Tamanho do ícone
                 iconUser.style.color = '#fff';
                 iconUser.style.transition = 'box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out';
                 iconUser.style.borderRadius = '10%';
+                // Cria mensagem de boas-vindas
                 const bemVindoMsg = document.createElement('p');
-                bemVindoMsg.textContent = `Bem-vindo, ${nomeUsuario}!`;
+                bemVindoMsg.textContent = `Bem-vindo,${nomeUsuario}!`;
                 bemVindoMsg.style.fontFamily = 'Roboto Mono, monospace';
                 bemVindoMsg.style.fontWeight = 'bold';
                 bemVindoMsg.style.fontSize = '15px';
                 bemVindoMsg.style.textAlign = 'center';
+                bemVindoMsg.style.marginLeft = '5px';
                 bemVindoMsg.style.color = '#fff';
                 perfilContainer.appendChild(bemVindoMsg);
 
+                // Atualiza as opções do perfil para usuário logado
                 opcoesPerfil.innerHTML = `
-            <li><a href="../cadastrar-receita/cadastrar-receita.php">Cadastrar Receita</a></li>
-            <li><a href="../logout.php">Sair</a></li>
-
-
+                    <li><a href="../cadastro-receitas/cadastro-receita.php">Cadastrar Receita</a></li>
+                    <li><a href="logout.php">Sair</a></li>
                 `;
             } else {
+                // Atualiza as opções do perfil para usuário não logado
                 opcoesPerfil.innerHTML = `
                     <li><a href="../entrar/entrar.php">Entrar</a></li>
-            `;
+                `;
             }
         });
     </script>
-
 </body>
 
 </html>

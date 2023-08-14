@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit();
             } else {
                 // Senha incorreta
-                $erro = "Credenciais inválidas. Verifique seu email e senha.";
+                $erro = "Credenciais inválidas. Verifique sua senha.";
             }
         } else {
             // Usuário não encontrado

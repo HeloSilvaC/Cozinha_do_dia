@@ -11,7 +11,7 @@ session_start();
     <!-- Links para as fontes do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
     <!-- Link para o Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -31,28 +31,44 @@ session_start();
     <!-- Seção de Cadastro e Login -->
     <div class="container">
         <!-- Container do Cadastro -->
+        <!-- Container do Cadastro -->
         <div class="cadastro-container">
             <h2>Cadastre-se</h2>
             <form action="valida-cadastro.php" method="POST">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+                <input type="text" id="nome" name="nome"
+                    oninput="this.value = this.value.replace(/^\w/, c => c.toUpperCase()); this.setCustomValidity('');"
+                    required oninvalid="this.setCustomValidity('Por favor, preencha o nome corretamente.');">
+
                 <label for="email-cadastro">E-mail:</label>
-                <input type="email" id="email-cadastro" name="email-cadastro" required>
+                <input type="email" id="email-cadastro" name="email-cadastro" required required
+                    oninvalid="this.setCustomValidity('Por favor, preencha o nome Por favor, insira um e-mail válido.');"
+                    oninput="this.setCustomValidity('');">
+
                 <label for="senha-cadastro">Senha:</label>
-                <input type="password" id="senha-cadastro" name="senha-cadastro" required>
+                <input type="password" id="senha-cadastro" name="senha-cadastro" minlength="6" required
+                    oninvalid="this.setCustomValidity('Por favor, insira uma senha com pelo menos 6 caracteres.');"
+                    oninput="this.setCustomValidity('');">
+
                 <label for="confirma-senha">Confirme a senha:</label>
-                <input type="password" id="confirma-senha" name="confirma-senha" required>
+                <input type="password" id="confirma-senha" name="confirma-senha" minlength="6" required
+                    oninvalid="this.setCustomValidity('As senhas não coincidem. Por favor, confirme a senha novamente.');"
+                    oninput="this.setCustomValidity('');">
+
                 <div class="captcha-container">
                     <div class="captcha-image-container">
                         <img src="../captcha.php" alt="Imagem do Captcha" class="captcha-image">
                     </div>
                     <div class="captcha-input-container">
-                        <input type="text" name="captcha" class="captcha-input" placeholder="Digite o Captcha" required>
+                        <input type="text" name="captcha" class="captcha-input" placeholder="Digite o Captcha" required
+                            oninvalid="this.setCustomValidity('Por favor, digite o Captcha');"
+                            oninput="this.setCustomValidity('');">
                     </div>
                 </div>
                 <input type="submit" value="Cadastrar">
             </form>
         </div>
+
         <p class="or-text">ou</p>
 
         <!-- Container do Login -->
@@ -82,17 +98,26 @@ session_start();
 
     <script>
         window.onload = function () {
-            var mensagem = "<?php echo $_GET['mensagem']; ?>"; // Pega o valor da mensagem da URL
+            var j = <?php $obj = json_decode($json_str, true); echo json_encode($obj); ?>;
 
-            if (mensagem === "success") {
+            if (j.status === "ok") {
                 alert("Usuário inserido com sucesso!");
-                history.replaceState(null, null, 'entrar.php'); // Remove o parâmetro 'mensagem' da URL
-            } else if (mensagem === "error") {
-                alert("Erro ao inserir usuário!");
-                history.replaceState(null, null, 'entrar.php'); // Remove o parâmetro 'mensagem' da URL
+            } else if (j.status === "erro") {
+                var erros = <?php echo json_encode($erros); ?>; // Pega os erros do PHP
+
+                if (erros.length > 0) {
+                    var errorMessage = "Erro ao inserir usuário:\n";
+
+                    for (var i = 0; i < erros.length; i++) {
+                        errorMessage += "- " + erros[i] + "\n";
+                    }
+
+                    alert(errorMessage);
+                }
             }
         }
     </script>
+
 
 </body>
 
