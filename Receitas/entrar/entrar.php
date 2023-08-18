@@ -11,7 +11,7 @@ session_start();
     <!-- Links para as fontes do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
     <!-- Link para o Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -95,32 +95,52 @@ session_start();
     <footer class="footer">
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <script>
         window.onload = function () {
-            var mensagem = "<?php echo $_GET['mensagem']; ?>"; // Pega o valor da mensagem da URL
-
-            if (mensagem === "success") {
-                alert("Usuário inserido com sucesso!");
-                history.replaceState(null, null, 'entrar.php'); // Remove o parâmetro 'mensagem' da URL
-            } else if (mensagem === "error") {
-                var erros = <?php echo json_encode($erros); ?>; // Pega os erros do PHP
-
-                if (erros.length > 0) {
-                    var errorMessage = "Erro ao inserir usuário:\n";
-
-                    for (var i = 0; i < erros.length; i++) {
-                        errorMessage += "- " + erros[i] + "\n";
+            <?php if (isset($_GET['mensagem'])) { ?>
+                if("<?= $_GET['imagem'] ?>" === "Usuário inserido com sucesso!"){
+                Swal.fire({
+                    title: "<?php echo addslashes(urldecode($_GET['mensagem'])); ?>",
+                    icon: 'success',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                    Swal.getPopup().style.backgroundColor = '#fff';
+                    Swal.getPopup().style.fontFamily = 'Roboto Mono';
+                    Swal.getPopup().style.fontSize = '15px';
+                    Swal.getPopup().style.color = '#DF901A';
+                    Swal.getPopup().style.borderColor = '#ccc';
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
                     }
-
-                    alert(errorMessage);
-                }
-
-                history.replaceState(null, null, 'entrar.php'); // Remove o parâmetro 'mensagem' da URL
+                });
             }
+
+            else {
+                Swal.fire({
+                    title: "<?php echo addslashes(urldecode($_GET['mensagem'])); ?>",
+                    icon: 'error',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                    Swal.getPopup().style.backgroundColor = '#fff';
+                    Swal.getPopup().style.fontFamily = 'Roboto Mono';
+                    Swal.getPopup().style.fontSize = '15px';
+                    Swal.getPopup().style.color = '#DF901A';
+                    Swal.getPopup().style.borderColor = '#ccc';
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                });
+            }
+            <?php } ?>
         }
     </script>
-
 
 </body>
 

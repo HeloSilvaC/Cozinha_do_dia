@@ -2,6 +2,7 @@
 header * {
     display: inline-block;
     vertical-align: middle;
+
 }
 
 /* Estilos gerais para o corpo da página */
@@ -24,7 +25,8 @@ body {
     align-items: center;
     background-color: #DF901A;
     padding: 20px;
-    padding-right: 0; /* Adicionei padding horizontal */
+    padding-right: 0;
+    /* Adicionei padding horizontal */
     width: auto;
     height: 80px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -34,13 +36,13 @@ body {
 /* Estilos para o título do cabeçalho */
 .header h1 {
     color: white;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 64px;
-    line-height: 85px;
-    text-align: left; /* Adicionei padding à direita para separar do próximo elemento */
+    font-weight: 400;
+    text-align: left;
     transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-    white-space: nowrap; 
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
 }
 
 /* Estilos para a caixa de busca */
@@ -55,14 +57,15 @@ body {
     font-size: 18px;
     padding: 8px 40px;
     text-align: left;
-    width: auto; /* Removi a largura fixa para se ajustar ao conteúdo */
+    width: auto;
+    /* Removi a largura fixa para se ajustar ao conteúdo */
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 
 /* Animação de Sombra e Escala */
 .header h1:hover {
-    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
     transform: scale(1.01);
 }
 
@@ -115,7 +118,7 @@ body {
 /* Definição de uma fonte personalizada chamada 'Horizon' */
 @font-face {
     font-family: 'Horizon';
-    src: url('path/to/Horizon.ttf') format('truetype');
+    src: url('path/to/Horizon.otf') format('truetype');
 }
 
 /* Estilos para a seção de receitas (contêiner) */
@@ -136,7 +139,6 @@ body {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: relative;
-    /* Adicione esta linha para posicionar os elementos internos */
     margin: 5px;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     background-color: #ffffff;
@@ -153,9 +155,7 @@ body {
     display: block;
     width: 100%;
     height: 100%;
-    /* Para que a imagem ocupe todo o card */
     object-fit: cover;
-    /* Para preencher o espaço da imagem, cortando se necessário */
 }
 
 /* Estilos para o texto dentro de cada card */
@@ -173,16 +173,9 @@ body {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* Estilos para o rodapé da página */
 .footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: #DF901A;
-    padding: 10px;
-    text-align: center;
-    color: white;
-    margin-top: 1px;
+    margin-top: 20px;
 }
 
 

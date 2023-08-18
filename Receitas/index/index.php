@@ -17,8 +17,9 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
     <!-- Links para as fontes do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <!-- Link para o Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Link para o arquivo de estilo personalizado (CSS) -->
@@ -87,7 +88,6 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 
     <!-- Seção do Rodapé -->
     <footer class="footer">
-        <!-- Conteúdo do rodapé -->
     </footer>
 
     <!-- Script JavaScript -->
@@ -104,7 +104,6 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
             if (estaLogado) {
                 // Estiliza o ícone de perfil
                 perfilContainer.style.cursor = 'pointer';
-                perfilContainer.style.marginRight = '10px';
                 const iconUser = perfilContainer.querySelector('.fas.fa-user-circle');
                 iconUser.style.fontSize = '35px'; // Tamanho do ícone
                 iconUser.style.color = '#fff';
@@ -112,18 +111,19 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
                 iconUser.style.borderRadius = '10%';
                 // Cria mensagem de boas-vindas
                 const bemVindoMsg = document.createElement('p');
-                bemVindoMsg.textContent = `Bem-vindo, ${nomeUsuario}!`;
+                bemVindoMsg.textContent = `Bem-vindo,${nomeUsuario}!`;
                 bemVindoMsg.style.fontFamily = 'Roboto Mono, monospace';
                 bemVindoMsg.style.fontWeight = 'bold';
                 bemVindoMsg.style.fontSize = '15px';
                 bemVindoMsg.style.textAlign = 'center';
+                bemVindoMsg.style.marginLeft = '5px';
                 bemVindoMsg.style.color = '#fff';
                 perfilContainer.appendChild(bemVindoMsg);
 
                 // Atualiza as opções do perfil para usuário logado
                 opcoesPerfil.innerHTML = `
-                    <li><a href="../cadastrar-receita/cadastrar-receita.php">Cadastrar Receita</a></li>
-                    <li><a href="../logout.php">Sair</a></li>
+                    <li><a href="../cadastro-receitas/cadastro-receita.php">Cadastrar Receita</a></li>
+                    <li><a href="logout.php">Sair</a></li>
                 `;
             } else {
                 // Atualiza as opções do perfil para usuário não logado

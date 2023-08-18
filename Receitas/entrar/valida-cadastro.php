@@ -35,7 +35,9 @@ if ($resultado_email->num_rows > 0) {
 // Exibe os erros, se houver
 if (!empty($erros)) {
     foreach ($erros as $erro) {
-        echo $erro . "<br>";
+        $mensagem = "Erro ao inserir usuário:\n" . $erros;
+        header("Location: entrar.php?mensagem=" . urlencode($mensagem)); // Redireciona para index.php com a mensagem
+        exit();
     }
 } else {
     // Criptografa a senha
@@ -47,18 +49,19 @@ if (!empty($erros)) {
     session_start();
     // Verifica o captcha
     if ($_POST["captcha"] == $_SESSION["palavra"]) {
-        // Executa a inserção no banco de dados
         if ($con->query($inserir_usuario) === TRUE) {
-            header("Location: entrar.php?mensagem=success"); // Redireciona para página de entrar.php com mensagem de sucesso
-            exit();
+            $mensagem = "Usuário inserido com sucesso!";
         } else {
-            header("Location: entrar.php?mensagem=error"); // Redireciona para página de entrar.php com mensagem de erro
-            exit();
+            $erros = implode("\n", $erros);
+            $mensagem = "Erro ao inserir usuário:\n" . $erros;
         }
+        
+        header("Location: entrar.php?mensagem=" . urlencode($mensagem)); // Redireciona para index.php com a mensagem
+        exit();
     } else {
-        // Exibe mensagem de erro de captcha
-        echo "<h1>Você não acertou o captcha!</h1>";
-        echo "<a href='entrar.php'></a>";
+        $mensagem = "Captcha inválido.";
+        header("Location: entrar.php?mensagem=" . urlencode($mensagem)); // Redireciona para index.php com a mensagem
+        exit();
     }
 }
 ?>

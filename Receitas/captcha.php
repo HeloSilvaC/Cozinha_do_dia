@@ -26,7 +26,7 @@ function captcha($largura, $altura, $tamanho_fonte, $quantidade_letras)
             20 + ($tamanho_fonte * $i),
             $altura / 1.5,
             $texto,
-            'ROBOTOMONO-BOLD.TTF',
+            "ARIAL.TTF",
             substr($palavra, $i, 1)
         );
     }
