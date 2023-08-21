@@ -95,29 +95,54 @@ session_start();
     <footer class="footer">
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <script>
         window.onload = function () {
-            var j = <?php $obj = json_decode($json_str, true); echo json_encode($obj); ?>;
-
-            if (j.status === "ok") {
-                alert("Usuário inserido com sucesso!");
-            } else if (j.status === "erro") {
-                var erros = <?php echo json_encode($erros); ?>; // Pega os erros do PHP
-
-                if (erros.length > 0) {
-                    var errorMessage = "Erro ao inserir usuário:\n";
-
-                    for (var i = 0; i < erros.length; i++) {
-                        errorMessage += "- " + erros[i] + "\n";
+            <?php if (isset($_GET['mensagem'])) { ?>
+                if("<?= $_GET['imagem'] ?>" == true){
+                Swal.fire({
+                    title: "Usuário cadastrado com sucesso!",
+                    icon: 'success',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                    Swal.getPopup().style.backgroundColor = '#fff';
+                    Swal.getPopup().style.fontFamily = 'Roboto Mono';
+                    Swal.getPopup().style.fontSize = '15px';
+                    Swal.getPopup().style.color = '#DF901A';
+                    Swal.getPopup().style.borderColor = '#ccc';
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
                     }
-
-                    alert(errorMessage);
-                }
+                });
+                window.history.pushState("", "", "/");
             }
+
+            else if("<?= $_GET['imagem'] ?>" == false){
+                Swal.fire({
+                    title: "Erro ao cadastrar!",
+                    icon: 'error',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                    Swal.getPopup().style.backgroundColor = '#fff';
+                    Swal.getPopup().style.fontFamily = 'Roboto Mono';
+                    Swal.getPopup().style.fontSize = '15px';
+                    Swal.getPopup().style.color = '#DF901A';
+                    Swal.getPopup().style.borderColor = '#ccc';
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval);
+                    }
+                });
+                window.history.pushState("", "", "/");
+            }
+            <?php } ?>
         }
     </script>
-
 
 </body>
 

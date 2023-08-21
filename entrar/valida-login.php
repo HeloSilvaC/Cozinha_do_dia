@@ -21,16 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             // Verifique a senha usando password_verify
             if (password_verify($senha_login, $linha['senha'])) {
-                // Login bem-sucedido
+                ob_clean(); // Limpar o buffer de saída
                 
-                // Defina as variáveis de sessão para manter o usuário logado
+                // Defina as variáveis de sessão e redirecione
                 $_SESSION["id"] = $linha["id"];
                 $_SESSION["estaLogado"] = true;
                 $_SESSION["nomeUsuario"] = $linha["nome"]; // Obtém o nome do usuário do banco de dados
-
+            
                 header("Location: ../index/index.php");
                 exit();
-            } else {
+            }
+             else {
                 // Senha incorreta
                 $erro = "Credenciais inválidas. Verifique sua senha.";
             }
