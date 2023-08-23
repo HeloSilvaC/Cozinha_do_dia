@@ -14,7 +14,7 @@ function captcha($largura, $altura, $tamanho_fonte, $quantidade_letras)
     imagefilledrectangle($imagem, 0, 0, $largura, $altura, $fundo);
 
     // Define a palavra conforme a quantidade de letras definidas no parâmetro
-    $palavra = substr(str_shuffle("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"), 0, $quantidade_letras);
+    $palavra = substr(str_shuffle("ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz23456789"), 0, $quantidade_letras);
 
     $_SESSION["palavra"] = $palavra; // Atribui para a sessão a palavra gerada
 

@@ -101,7 +101,7 @@ session_start();
     <script>
         window.onload = function () {
             <?php if (isset($_GET['mensagem'])) { ?>
-                if("<?= $_GET['imagem'] ?>" == true){
+                if("<?= $_GET['mensagem'] ?>" == 1){
                 Swal.fire({
                     title: "Usuário cadastrado com sucesso!",
                     icon: 'success',
@@ -121,7 +121,7 @@ session_start();
                 window.history.pushState("", "", "/");
             }
 
-            else if("<?= $_GET['imagem'] ?>" == false){
+            else if("<?= $_GET['mensagem'] ?>" == 0){
                 Swal.fire({
                     title: "Erro ao cadastrar!",
                     icon: 'error',
@@ -138,7 +138,8 @@ session_start();
                         clearInterval(timerInterval);
                     }
                 });
-                window.history.pushState("", "", "/");
+                window.history.pushState({}, document.title, "/codigos/Receitas/entrar/entrar.php");
+
             }
             <?php } ?>
         }

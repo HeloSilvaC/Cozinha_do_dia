@@ -27,14 +27,10 @@ $resultado_email = $verificar_email->get_result();
             $mensagem = true;
             header("Location: entrar.php?mensagem=" . urlencode($mensagem));
             exit();
-        } else {
-            $mensagem = false;
-            header("Location: entrar.php?mensagem=" . urlencode($mensagem));
-            exit();
-        }
     } else {
-        $mensagem = "Captcha inválido.";
+        $mensagem = false;
         header("Location: entrar.php?mensagem=" . urlencode($mensagem));
         exit();
     }
+}
 ?>

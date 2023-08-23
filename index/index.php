@@ -37,8 +37,9 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 
         <!-- Caixa de busca -->
         <div class="search-box">
-            <input type="search" id="search" name="search" placeholder="Encontre uma receita...">
-            <i class="fas fa-search search-icon"></i>
+            <input type="search" id="search" name="search" placeholder="Encontre uma receita..."
+                onkeydown="searchOnEnter(event)">
+            <i class="fas fa-search search-icon" onclick="searchRecipe()"></i>
         </div>
 
         <!-- Contêiner do perfil com opções de login/cadastro -->
@@ -92,6 +93,22 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 
     <!-- Script JavaScript -->
     <script>
+
+        // Função para pesquisar quando a tecla "Enter" for pressionada
+        function searchOnEnter(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Evita a ação padrão do formulário
+                searchRecipe();
+            }
+        }
+
+        // Função para realizar a pesquisa
+        function searchRecipe() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            window.location.href = `../receita.php?search=${encodeURIComponent(searchTerm)}`;
+        }
+
+        // Redireciona para receitas.html com o termo de pesquisa na URL
         document.addEventListener('DOMContentLoaded', function () {
             // Obtém o contêiner do perfil
             const perfilContainer = document.querySelector('.perfil-container');
