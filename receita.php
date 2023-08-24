@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Seu cabeçalho HTML aqui -->
 </head>
-
 <body>
     <div id="recipe-details">
         <!-- Os detalhes da receita serão inseridos aqui pelo JavaScript -->
@@ -100,5 +98,4 @@
         });
     </script>
 </body>
-
 </html>

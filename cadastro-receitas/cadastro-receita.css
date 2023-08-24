@@ -40,10 +40,10 @@ body {
 /* Container principal */
 .container {
     align-items: center;
-    max-width: 900px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+   
 }
 
 /* Formulário */
@@ -54,13 +54,25 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: auto;
+    text-align: center;
+    
+}
+form{
+    display: flex;
+    width: 400px;
+    justify-content: center;
+    text-align: center;
 }
 
 .cadastro-container h2 {
+    
     color: #DF901A;
     font-family: 'Horizon', sans-serif;
     font-size: 24px;
     margin-bottom: 20px;
+    text-align: center;
+    
 }
 
 form {
@@ -73,6 +85,7 @@ label {
     font-weight: 300;
     font-size: 16px;
     margin-bottom: 10px;
+    
 }
 
 input[type="text"],
