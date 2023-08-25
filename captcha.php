@@ -14,7 +14,7 @@ function captcha($largura, $altura, $tamanho_fonte, $quantidade_letras)
     imagefilledrectangle($imagem, 0, 0, $largura, $altura, $fundo);
 
     // Define a palavra conforme a quantidade de letras definidas no parâmetro
-    $palavra = substr(str_shuffle("ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz23456789"), 0, $quantidade_letras);
+    $palavra = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz23456789"), 0, $quantidade_letras);
 
     $_SESSION["palavra"] = $palavra; // Atribui para a sessão a palavra gerada
 
@@ -34,10 +34,9 @@ function captcha($largura, $altura, $tamanho_fonte, $quantidade_letras)
     imagedestroy($imagem); // Limpa a imagem da memória
 }
 
-$largura = 150; // Largura da imagem do captcha
-$altura = 50; // Altura da imagem do captcha
-$tamanho_fonte = 20; // Tamanho da fonte utilizada no captcha
-$quantidade_letras = 6; // Quantidade de letras que o captcha terá
+$largura = 150;
+$altura = 50;
+$tamanho_fonte = 20;
+$quantidade_letras = 6;
 captcha($largura, $altura, $tamanho_fonte, $quantidade_letras);
-// Executa a função captcha passando os parâmetros recebidos
 ?>
