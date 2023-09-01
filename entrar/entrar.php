@@ -106,7 +106,9 @@ session_start();
     </div>
     <!-- Seção do Rodapé -->
     <footer class="footer">
-        <p>&copy; 2023 Cozinha do dia.</p>
+        <p>&copy;
+            <?php echo date("Y"); ?> Cozinha do dia.
+        </p>
     </footer>
 
 
@@ -178,15 +180,15 @@ session_start();
 
 
                 $('#telefone').on('input', function () {
-                var unformatted = $(this).val().replace(/[^\d]/g, '');
-                if (unformatted.length >= 11) {
-                    $(this).val('(' + unformatted.substr(0, 2) + ') ' + unformatted.substr(2, 5) + '-' + unformatted.substr(7, 4));
-                } else if (unformatted.length >= 2) {
-                    $(this).val('(' + unformatted.substr(0, 2) + ') ' + unformatted.substr(2));
-                } else {
-                    $(this).val(unformatted);
-                }
-            });
+                    var unformatted = $(this).val().replace(/[^\d]/g, '');
+                    if (unformatted.length >= 11) {
+                        $(this).val('(' + unformatted.substr(0, 2) + ') ' + unformatted.substr(2, 5) + '-' + unformatted.substr(7, 4));
+                    } else if (unformatted.length >= 2) {
+                        $(this).val('(' + unformatted.substr(0, 2) + ') ' + unformatted.substr(2));
+                    } else {
+                        $(this).val(unformatted);
+                    }
+                });
 
                 // Aplicar comportamento para o campo do Captcha
                 $('.captcha-input').on('input', function () {

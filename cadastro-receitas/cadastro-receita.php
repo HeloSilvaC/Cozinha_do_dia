@@ -1,5 +1,4 @@
 <?php
-// Inicia a sessão
 session_start();
 
 // Verifica se o usuário está logado
@@ -7,11 +6,10 @@ $estaLogado = isset($_SESSION["estaLogado"]) && $_SESSION["estaLogado"];
 
 // Redireciona para a página de login se o usuário não estiver logado
 if (!$estaLogado) {
-    header("Location: ../index.php"); // Altere o caminho conforme necessário
+    header("Location: ../index.php");
     exit();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -24,7 +22,7 @@ if (!$estaLogado) {
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="cadastro-receita.css">
     <title>Cadastro de Receitas - Cozinha do Dia</title>
 </head>
@@ -42,7 +40,7 @@ if (!$estaLogado) {
         <!-- Container do Cadastro de Receitas -->
         <div class="cadastro-container">
             <h2>Cadastro de Receitas</h2>
-            <form>
+            <form method="POST" action="processar-receita.php" enctype="multipart/form-data">
                 <!-- Campo do nome da receita -->
                 <label for="nome-receita"><b>Nome da Receita:</b></label>
                 <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
@@ -53,15 +51,14 @@ if (!$estaLogado) {
                     <div class="ingredientes-container">
                         <div class="ingrediente">
                             <!-- Campo do nome do ingrediente -->
-                            <input type="text" id="nome-ingrediente" name="nome-ingrediente"
+                            <input type="text" id="nome-ingrediente" name="ingredientes[]"
                                 placeholder="Nome do ingrediente" required>
 
                             <!-- Campo da quantidade do ingrediente -->
-                            <input type="number" id="quantidade-ingrediente" name="quantidade-ingrediente"
-                                placeholder="Quantidade" required min="0">
+                            <input type="number" name="quantidades[]" placeholder="Quantidade" required min="0">
 
                             <!-- Campo da unidade de medida -->
-                            <select id="unidade-medida" name="unidade-medida" required>
+                            <select name="unidades[]" required>
                                 <option value="" disabled selected>Escolher unidade</option>
                                 <option value="g">grama(s)</option>
                                 <option value="kg">quilograma(s)</option>
@@ -82,9 +79,9 @@ if (!$estaLogado) {
                 <fieldset>
                     <legend>Modo de Preparo</legend>
                     <ol id="modo-preparo-lista">
+                        <!-- Incluí apenas um passo inicial -->
                         <li>
-                            <textarea id="modo-preparo-passo" name="modo-preparo-passo" placeholder="Passo 1" rows="3"
-                                required></textarea>
+                            <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
                             <button type="button" class="btn-remover">
                                 <i class="fa fa-trash"></i>
                             </button>
@@ -118,12 +115,11 @@ if (!$estaLogado) {
                 </select>
 
                 <!-- Imagens da receita -->
+                <!-- No seu HTML, adicione uma div para a visualização das imagens -->
                 <div class="imagens-container">
                     <label for="imagens-receita"><b>Imagens da Receita:</b></label>
-                    <input type="file" id="imagem-receita" name="imagem-receita[]" accept="image/*">
-                    <button type="button" id="btn-adicionar-imagem">
-                        <i class="fa fa-check"></i>
-                    </button>
+                    <input type="file" id="imagem-receita" name="imagens-receita[]" accept="image/*" multiple>
+                    <div class="imagem-preview-container"></div>
                 </div>
 
                 <input type="submit" id="btn-cadastrar" value="Cadastrar Receita">
@@ -132,8 +128,12 @@ if (!$estaLogado) {
     </div>
 
     <footer class="footer">
-        <p>&copy; 2023 Cozinha do dia.</p>
+        <p>&copy;
+            <?php echo date("Y"); ?> Cozinha do dia.
+        </p>
     </footer>
+
+    <script src="cadastro-receita.js"></script>
 </body>
 
 </html>

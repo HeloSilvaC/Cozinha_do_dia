@@ -29,7 +29,6 @@ body {
     font-weight: 400;
     text-align: left;
     transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     white-space: nowrap;
 }
 
@@ -73,7 +72,7 @@ form {
 
 form b {
     color: #DF901A;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Roboto Mono', monospace;
 }
 
@@ -90,7 +89,6 @@ fieldset {
     padding: 20px;
     margin-bottom: 20px;
     background-color: #fff;
-
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
     width: 90%;
@@ -100,7 +98,7 @@ legend {
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     color: #DF901A;
     margin-bottom: 10px;
 }
@@ -161,6 +159,7 @@ select {
     cursor: pointer;
     transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
     margin-left: 5px;
+    margin-bottom: 10px;
 }
 
 .btn-remover:hover {
@@ -270,3 +269,22 @@ select {
     color: white;
     font-family: 'Roboto Mono', monospace;
 }
+
+/* Adicione estilos CSS para a visualização das imagens */
+.imagem-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .imagem-preview {
+    margin-left: 10px;
+    max-width: 200px; 
+    max-height: 200px; 
+    margin-right: 5px; 
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    cursor: pointer;
+  }
+
+  

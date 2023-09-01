@@ -64,7 +64,9 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2023 Cozinha do dia.</p>
+        <p>&copy;
+            <?php echo date("Y"); ?> Cozinha do dia.
+        </p>
     </footer>
 </body>
 

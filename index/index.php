@@ -106,7 +106,6 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/sxd0AVcPgbI?autoplay=0" allowfullscreen></iframe>
                 <img src="../Imagens/guacamole.png" alt="Guacamole" class="recipe-image">
-                <!-- Imagem agora dentro do mesmo div -->
             </div>
             <div class="card-text">
                 <h1>GUACAMOLE</h1>
@@ -116,7 +115,6 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/BCBxMZlKfdc?autoplay=0" allowfullscreen></iframe>
                 <img src="../Imagens/salada_de_frutas.png" alt="Salada de frutas" class="recipe-image">
-                <!-- Imagem agora dentro do mesmo div -->
             </div>
             <div class="card-text">
                 <h1>SALADA DE FRUTAS</h1>
@@ -125,7 +123,9 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
     </div>
 
     <footer class="footer">
-        <p>&copy; 2023 Cozinha do dia.</p>
+        <p>&copy;
+            <?php echo date("Y"); ?> Cozinha do dia.
+        </p>
     </footer>
 
     <!-- Script JavaScript -->
