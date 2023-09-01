@@ -1,0 +1,139 @@
+<?php
+// Inicia a sessão
+session_start();
+
+// Verifica se o usuário está logado
+$estaLogado = isset($_SESSION["estaLogado"]) && $_SESSION["estaLogado"];
+
+// Redireciona para a página de login se o usuário não estiver logado
+if (!$estaLogado) {
+    header("Location: ../index.php"); // Altere o caminho conforme necessário
+    exit();
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="cadastro-receita.css">
+    <title>Cadastro de Receitas - Cozinha do Dia</title>
+</head>
+
+<body>
+    <!-- Seção do Cabeçalho -->
+    <header class="header">
+        <a href="../index/index.php" style="text-decoration: none;">
+            <h1 data-text="COZINHA DO DIA">COZINHA DO DIA</h1>
+        </a>
+    </header>
+
+    <!-- Seção do Cadastro de Receitas -->
+    <div class="container">
+        <!-- Container do Cadastro de Receitas -->
+        <div class="cadastro-container">
+            <h2>Cadastro de Receitas</h2>
+            <form>
+                <!-- Campo do nome da receita -->
+                <label for="nome-receita"><b>Nome da Receita:</b></label>
+                <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
+
+                <!-- Grupo de campos dos ingredientes -->
+                <fieldset>
+                    <legend>Ingredientes</legend>
+                    <div class="ingredientes-container">
+                        <div class="ingrediente">
+                            <!-- Campo do nome do ingrediente -->
+                            <input type="text" id="nome-ingrediente" name="nome-ingrediente"
+                                placeholder="Nome do ingrediente" required>
+
+                            <!-- Campo da quantidade do ingrediente -->
+                            <input type="number" id="quantidade-ingrediente" name="quantidade-ingrediente"
+                                placeholder="Quantidade" required min="0">
+
+                            <!-- Campo da unidade de medida -->
+                            <select id="unidade-medida" name="unidade-medida" required>
+                                <option value="" disabled selected>Escolher unidade</option>
+                                <option value="g">grama(s)</option>
+                                <option value="kg">quilograma(s)</option>
+                                <option value="ml">mililitro(s)</option>
+                                <option value="l">litro(s)</option>
+                                <option value="un">unidade(s)</option>
+                            </select>
+
+                            <button type="button" class="btn-remover">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" id="btn-adicionar-ingrediente">Adicionar Novo Ingrediente</button>
+                </fieldset>
+
+                <!-- Grupo de campos do modo de preparo -->
+                <fieldset>
+                    <legend>Modo de Preparo</legend>
+                    <ol id="modo-preparo-lista">
+                        <li>
+                            <textarea id="modo-preparo-passo" name="modo-preparo-passo" placeholder="Passo 1" rows="3"
+                                required></textarea>
+                            <button type="button" class="btn-remover">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </li>
+                    </ol>
+                    <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
+                </fieldset>
+
+                <!-- Campo do tempo de preparo e das porções -->
+                <div class="tempo-porcoes-container">
+                    <div class="tempo-preparo">
+                        <label for="tempo-preparo"><b>Tempo de Preparo (minutos):</b></label>
+                        <input type="number" id="tempo-preparo" name="tempo-preparo" required class="input-number"
+                            min="0">
+                    </div>
+
+                    <div class="porcoes">
+                        <label for="porcoes"><b>Porções:</b></label>
+                        <input type="number" id="porcoes" name="porcoes" required class="input-number" min="0">
+                    </div>
+                </div>
+
+                <!-- Campo da categoria -->
+                <label for="categoria"><b>Categoria:</b></label>
+                <select id="categoria" name="categoria" required>
+                    <option value="massas">Massas</option>
+                    <option value="carnes">Carnes</option>
+                    <option value="vegetariana">Vegetariana</option>
+                    <option value="sobremesas">Sobremesas</option>
+                    <!-- Adicione mais opções conforme necessário -->
+                </select>
+
+                <!-- Imagens da receita -->
+                <div class="imagens-container">
+                    <label for="imagens-receita"><b>Imagens da Receita:</b></label>
+                    <input type="file" id="imagem-receita" name="imagem-receita[]" accept="image/*">
+                    <button type="button" id="btn-adicionar-imagem">
+                        <i class="fa fa-check"></i>
+                    </button>
+                </div>
+
+                <input type="submit" id="btn-cadastrar" value="Cadastrar Receita">
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 Cozinha do dia.</p>
+    </footer>
+</body>
+
+</html>

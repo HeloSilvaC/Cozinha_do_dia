@@ -1,0 +1,272 @@
+/*geral*/
+body {
+    background-color: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*cabeçalho*/
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DF901A;
+    padding: 5px;
+    width: auto;
+    height: 80px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.header h1 {
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    text-align: left;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+}
+
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+/*contêiner principal*/
+.container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/*contêiner de cadastro*/
+.cadastro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+.cadastro-container h2 {
+    color: #DF901A;
+    font-family: 'Horizon';
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form b {
+    color: #DF901A;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+label {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
+    width: 90%;
+}
+
+legend {
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-size: 20px;
+    color: #DF901A;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+/* Botões */
+#btn-adicionar-ingrediente,
+#btn-adicionar-passo {
+    background-color: #DF901A;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#btn-cadastrar {
+    background-color: #DF901A;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+    font-size: 15px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-remover {
+    color: #DF901A;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    margin-left: 5px;
+}
+
+.btn-remover:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+
+/*ingredientes e modo de preparo*/
+.ingrediente,
+#modo-preparo-lista li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ingrediente input[type="text"],
+.ingrediente input[type="number"],
+.ingrediente select {
+    margin-right: 10px;
+}
+
+/* Container para Tempo de Preparo e Porções */
+.tempo-porcoes-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.tempo-porcoes-container label{
+    font-size: 10px;
+}
+
+/* Estilos para Tempo de Preparo e Porções */
+.tempo-preparo,
+.porcoes {
+    width: 48%;
+    /* Define o tamanho desejado para os campos */
+}
+
+
+
+/*contêiner de imagens*/
+.imagens-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
+    padding: 20px;
+}
+
+.imagens-container label {
+    flex: 1;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    color: #DF901A;
+    margin-bottom: 5px;
+}
+
+.imagens-container input[type="file"] {
+    flex: 2;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    width: 90%;
+}
+
+.imagens-container b {
+    color: #DF901A;
+    font-size: 15px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.imagens-container button {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #DF901A;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.imagens-container button:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+/* Rodapé */
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #DF901A;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}

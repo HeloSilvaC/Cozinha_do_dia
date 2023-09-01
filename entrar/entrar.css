@@ -1,0 +1,260 @@
+/*geral*/
+body {
+    background-color: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*cabeçalho*/
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DF901A;
+    padding: 5px;
+    width: auto;
+    height: 80px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.header h1 {
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    text-align: left;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+}
+
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+/*contêiner do formulário de cadastro e login*/
+/* CSS para o Container de Cadastro */
+.cadastro-container {
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    height: auto;
+}
+
+/* CSS para o Container de Login */
+.login-container {
+    width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    height: 400px;
+}
+
+@font-face {
+    font-family: 'Horizon';
+    src: url('path/to/Horizon.ttf') format('truetype');
+}
+
+.cadastro-container h2 {
+    color: #DF901A;
+    font-family: 'Horizon';
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/*campos de entrada do formulário*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.genero-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.genero-container label {
+    margin-right: 10px;
+    margin-left: 0;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.genero-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #DF901A;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.checkbox-container label {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.checkbox-container a {
+    text-decoration: none;
+    color: #DF901A;
+    font-weight: bold;
+}
+
+.checkbox-container a:hover {
+    text-decoration: underline;
+}
+
+
+/*botão de envio do formulário*/
+input[type="submit"] {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    background-color: #DF901A;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 8px;
+}
+
+input[type="submit"]:hover {
+    background-color: #E87506;
+}
+
+/*seção de login social*/
+.social-login {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.social-login p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+/*ícones de login social*/
+.social-icons a {
+    display: inline-block;
+    font-size: 30px;
+    color: #DF901A;
+    margin: 0 10px;
+}
+
+
+.login-container h2 {
+    color: #DF901A;
+    font-family: 'Horizon';
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/*campos de entrada do formulário de login*/
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Estilos para o rodapé */
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #DF901A;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+.captcha-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.captcha-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.captcha-input {
+    font-family: 'Roboto Mono', monospace;
+    margin-top: 8px;
+    font-size: 14px;
+    width: 200px;
+    padding: 8px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
