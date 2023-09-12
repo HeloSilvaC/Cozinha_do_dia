@@ -16,6 +16,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
     <!-- Link para o Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Link para o arquivo de estilo personalizado (CSS) -->
     <link rel="stylesheet" href="entrar.css">
     <!-- Link para o jQuery -->
@@ -42,9 +43,8 @@ session_start();
                 <input type="text" id="nome" name="nome" required>
 
                 <label for="genero">Gênero:</label>
-
                 <div class="genero-container">
-                    <input type="radio" id="genero-masculino" name="genero" value="masculino">
+                    <input type="radio" id="genero-masculino" name="genero" value="masculino" required>
                     <label for="genero-masculino">Masculino</label>
 
                     <input type="radio" id="genero-feminino" name="genero" value="feminino">
@@ -74,12 +74,14 @@ session_start();
 
                 <div class="captcha-container">
                     <div class="captcha-image-container">
-                        <img src="captcha.php" alt="Imagem do Captcha" class="captcha-image">
-
+                        <img src="captcha.php" alt="Imagem do Captcha" class="captcha-image" id="captcha-image">
                     </div>
                     <div class="captcha-input-container">
                         <input type="text" name="captcha" class="captcha-input" placeholder="Digite o Captcha" required>
                     </div>
+                    <button type="button" id="refresh-captcha">
+                        <i class="fa fa-refresh"></i>
+                    </button>
                 </div>
                 <input type="submit" value="Cadastrar">
             </form>
@@ -117,7 +119,6 @@ session_start();
 
     <script>
         window.onload = function () {
-
 
             $(document).ready(function () {
                 // Função para transformar a primeira letra em maiúscula
@@ -190,11 +191,36 @@ session_start();
                     }
                 });
 
+                $('#concordo').on('change', function () {
+                    if (!this.checked) {
+                        this.setCustomValidity('Você deve concordar com os termos de serviço.');
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+
                 // Aplicar comportamento para o campo do Captcha
                 $('.captcha-input').on('input', function () {
                     validateRequired(this);
                 });
+
             });
+
+            function refreshCaptcha() {
+                // Gere um novo timestamp para forçar o recarregamento da imagem do captcha
+                var timestamp = new Date().getTime();
+                var captchaImage = document.getElementById('captcha-image');
+                captchaImage.src = 'captcha.php?t=' + timestamp; // Adicione o timestamp como parâmetro GET
+            }
+
+            // Adicione um ouvinte de evento ao botão "Recarregar Captcha"
+            var refreshButton = document.getElementById('refresh-captcha');
+            if (refreshButton) {
+                refreshButton.addEventListener('click', function () {
+                    refreshCaptcha();
+                });
+            }
+
             <?php if (isset($_GET['mensagem'])) { ?>
                 if ("<?= $_GET['mensagem'] ?>" === "true") {
                     Swal.fire({
