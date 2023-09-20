@@ -124,9 +124,20 @@ session_start();
                 // Função para transformar a primeira letra em maiúscula
                 function capitalizeFirstLetter(inputField) {
                     var currentValue = $(inputField).val();
-                    currentValue = currentValue.charAt(0).toUpperCase() + currentValue.slice(1);
+                    // Verifique se o campo é o campo "nome"
+                    if ($(inputField).attr('id') === 'nome') {
+                        // Transforme apenas a primeira letra em maiúscula
+                        currentValue = currentValue.charAt(0).toUpperCase() + currentValue.slice(1).toLowerCase();
+                    }
                     $(inputField).val(currentValue);
                 }
+
+                // Aplicar comportamento para o campo de texto "Nome"
+                $('#nome').on('input', function () {
+                    capitalizeFirstLetter(this);
+                    validateRequired(this);
+                });
+
 
                 // Função para validar campos obrigatórios
                 function validateRequired(inputField) {

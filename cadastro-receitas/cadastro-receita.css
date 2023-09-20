@@ -37,32 +37,50 @@ body {
     transform: scale(1.01);
 }
 
-/*contêiner principal*/
-.container {
-    align-items: center;
+
+/* CSS para a estrutura flexbox */
+.container-geral {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
+    
 }
 
-/*contêiner de cadastro*/
 .cadastro-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    margin: 30px auto;
+    flex-basis: calc(50% - 10px);
+    width: 48%;
+    margin: 10px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
-    padding: 20px;
-    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cadastro-container h2 {
     color: #DF901A;
     font-family: 'Horizon';
+    text-align: center;
 }
+
+.container-direita{
+    flex-basis: calc(50% - 10px); /* Defina a largura de cada container (50% - espaço entre eles) */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px; /* Adicione margem inferior para espaçamento */
+    padding: 20px;
+    margin-top: 10px;
+    text-align: center;
+   
+   
+}
+.container-direita b{
+    color: #DF901A;
+    font-family: 'Roboto Mono', monospace;;
+    text-align: center;
+    font-size: 16px;
+}
+
 
 form {
     display: flex;
@@ -74,6 +92,7 @@ form b {
     color: #DF901A;
     font-size: 18px;
     font-family: 'Roboto Mono', monospace;
+    text-align: left;
 }
 
 label {
@@ -191,7 +210,7 @@ select {
     margin: 0 auto;
 }
 
-.tempo-porcoes-container label{
+.tempo-porcoes-container label {
     font-size: 10px;
 }
 
@@ -211,6 +230,7 @@ select {
     justify-content: center;
     align-items: center;
     max-width: 600px;
+    margin: 0 auto;
     margin-bottom: 10px;
     background-color: #fff;
     border-radius: 10px;
@@ -274,17 +294,15 @@ select {
 .imagem-preview-container {
     display: flex;
     flex-wrap: wrap;
-  }
-  
-  .imagem-preview {
+}
+
+.imagem-preview {
     margin-left: 10px;
-    max-width: 200px; 
-    max-height: 200px; 
-    margin-right: 5px; 
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px; 
+    border-radius: 4px;
     cursor: pointer;
-  }
-
-  
+}

@@ -4,7 +4,6 @@ session_start();
 
 $session_timeout = 1800; // 30 minutos
 
-
 // Verifica se a sessão está ativa
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $session_timeout)) {
     session_unset();

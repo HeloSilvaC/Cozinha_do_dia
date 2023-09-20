@@ -7,7 +7,7 @@ session_start();
 // Remover as variáveis de sessão
 unset($_SESSION["estaLogado"]);
 unset($_SESSION["nomeUsuario"]);
-
+ 
 // Limpar o buffer de saída
 ob_end_clean();
 
