@@ -1,6 +1,7 @@
 /*geral*/
 body {
-    background-color: #EEEEEE;
+   background-color: #f4e997;
+    /*background-color: #EEEEEE;*/
 }
 
 * {
@@ -80,7 +81,10 @@ body {
     text-align: center;
     font-size: 16px;
 }
-
+.h2{
+    font: optional;
+    text-align: center;
+}
 
 form {
     display: flex;
@@ -113,13 +117,19 @@ fieldset {
     width: 90%;
 }
 
-legend {
+.upload-img{
+    text-align: center;
+
+}
+
+.legend {
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
     font-size: 18px;
     color: #DF901A;
     margin-bottom: 10px;
+   
 }
 
 input[type="text"],
@@ -281,6 +291,7 @@ select {
 
 /* Rodapé */
 .footer {
+
     bottom: 0;
     width: 100%;
     background-color: #DF901A;

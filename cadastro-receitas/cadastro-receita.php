@@ -31,71 +31,74 @@
     <!-- Seção do Cabeçalho -->
     <header class="header">
         <a href="../index/index.php" style="text-decoration: none;">
-            <h1 data-text="COZINHA DO DIA">COZINHA DO DIA</h1>
+            <h1 data-text="COZINHA DO DIA">CADASTRO DE RECEITAS</h1>
         </a>
     </header>
 
     <!-- Seção do Cadastro de Receitas -->
-    <div class="container-geral">
-        <!-- Container do Cadastro de Receitas -->
-        <div class="cadastro-container">
-            <h2>Cadastro de Receitas</h2>
-            </br>
-            <form method="POST" action="processar-receita.php" enctype="multipart/form-data">
-                <!-- Campo do nome da receita -->
-                <label for="nome-receita"><b>Nome da Receita:</b></label>
-                <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
-                </br>
-                <!-- Grupo de campos dos ingredientes -->
-                <fieldset>
-                    <legend>Ingredientes</legend>
-                    <div class="ingredientes-container">
-                        <div class="ingrediente">
-                            <!-- Campo do nome do ingrediente -->
-                            <input type="text" id="nome-ingrediente" name="ingredientes[]"
-                                placeholder="Nome do ingrediente" required>
+    <!--<div class="container-geral"> -->
+    <!--<div class="container-geral">  -->
+    <!-- Container do Cadastro de Receitas -->
+    <!--  <div class="cadastro-container"> -->
+    <!--<div class="h2"><h2>Cadastro de Receitas</h2></div>-->
+    </br>
+    <form method="POST" action="processar-receita.php" enctype="multipart/form-data">
+        <!-- Campo do nome da receita -->
+        <label for="nome-receita"><b>Nome da Receita:</b></label>
+        <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
+        </br>
+        <!-- Grupo de campos dos ingredientes -->
+        <fieldset class="ingredientes">
+            <p class="legend">Ingredientes</p>
+            <div class="ingredientes-container">
+                <div class="ingrediente">
+                    <!-- Campo do nome do ingrediente -->
+                    <input type="text" id="nome-ingrediente" name="ingredientes[]" placeholder="Nome do ingrediente"
+                        required>
 
-                            <!-- Campo da quantidade do ingrediente -->
-                            <input type="number" name="quantidades[]" placeholder="Quantidade" required min="0">
+                    <!-- Campo da quantidade do ingrediente -->
+                    <input type="number" name="quantidades[]" placeholder="Quantidade" required min="0">
 
-                            <!-- Campo da unidade de medida -->
-                            <select name="unidades[]" required>
-                                <option value="" disabled selected>Escolher unidade</option>
-                                <option value="g">grama(s)</option>
-                                <option value="kg">quilograma(s)</option>
-                                <option value="ml">mililitro(s)</option>
-                                <option value="l">litro(s)</option>
-                                <option value="un">unidade(s)</option>
-                            </select>
+                    <!-- Campo da unidade de medida -->
+                    <select name="unidades[]" required>
+                        <option value="" disabled selected>Escolher unidade</option>
+                        <option value="g">grama(s)</option>
+                        <option value="kg">quilograma(s)</option>
+                        <option value="ml">mililitro(s)</option>
+                        <option value="l">litro(s)</option>
+                        <option value="un">unidade(s)</option>
+                    </select>
 
-                            <button type="button" class="btn-remover">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button type="button" id="btn-adicionar-ingrediente">Adicionar Novo Ingrediente</button>
-                </fieldset>
-                </br>
+                    <button type="button" class="btn-remover">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="button" id="btn-adicionar-ingrediente">Adicionar Novo Ingrediente</button>
+        </fieldset>
+        </br>
 
-                <!-- Grupo de campos do modo de preparo -->
+        <!-- Grupo de campos do modo de preparo -->
 
-                <fieldset>
-                    <legend>Modo de Preparo</legend>
-                    <ol id="modo-preparo-lista">
-                        <!-- Incluí apenas um passo inicial -->
-                        <li>
-                            <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
-                            <button type="button" class="btn-remover">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </li>
-                    </ol>
-                    <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
-                </fieldset>
-                </br>
+        <fieldset class="teste">
+            <p class="legend">Modo de Preparo</p>
+            <ol id="modo-preparo-lista">
+                <!-- Incluí apenas um passo inicial -->
+                <li>
+                    <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
+                    <button type="button" class="btn-remover">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </li>
+            </ol>
+            <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
+        </fieldset>
+        
+        </br>
         </div>
-        <div class="container-direita">
-            <!-- Campo do tempo de preparo e das porções -->
+        <!--  <div class="container-direita">-->
+        <!-- Campo do tempo de preparo e das porções -->
+        <fieldset>
             <div class="tempo-porcoes-container">
                 <div class="tempo-preparo">
                     <label for="tempo-preparo"><b>Tempo de Preparo (min):</b></label>
@@ -108,32 +111,44 @@
                 </div>
             </div>
             </br>
+        </fieldset>
 
-            <!-- Campo da categoria -->
+        <!-- Campo da categoria -->
+        <fieldset>
             <label for="categoria"><b>Categoria:</b></label>
             <select id="categoria" name="categoria" required>
                 <option value="massas">Massas</option>
                 <option value="carnes">Carnes</option>
                 <option value="vegetariana">Vegetariana</option>
                 <option value="sobremesas">Sobremesas</option>
+
+
+
                 <!-- Adicione mais opções conforme necessário -->
             </select>
             </br>
-            <!-- Imagens da receita -->
-            <!-- No seu HTML, adicione uma div para a visualização das imagens -->
-            <div class="imagens-container">
-                <label for="imagens-receita"><b>Imagens da Receita:</b></label>
-                <input type="file" id="imagem-receita" name="imagens-receita[]" accept="image/*" multiple>
-                <div class="imagem-preview-container"></div>
+        </fieldset>
+        <!-- Imagens da receita -->
+        <!-- No seu HTML, adicione uma div para a visualização das imagens -->
+        <!--   <div class="imagens-container">-->
+        <fieldset class="upload-img">
+            <label for="imagens-receita"><b>Imagens da Receita:</b></label>
+            <input type="file" id="imagem-receita" name="imagens-receita[]" accept="image/*" multiple>
+            <div class="imagem-preview-container"></div>
+
             </div>
             </br>
-            <input type="submit" id="btn-cadastrar" value="Cadastrar Receita">
+        </fieldset>
+
+
+        <input type="submit" id="btn-cadastrar" value="Cadastrar Receita">
+        </br>
         </div>
 
 
-        </form>
-    </div>
 
+    </form>
+    </div>
 
     <footer class="footer">
         <p>&copy;
