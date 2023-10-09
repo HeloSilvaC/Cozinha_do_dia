@@ -57,10 +57,13 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
         </a>
 
         <!-- Caixa de busca -->
-        <div class="search-box">
-            <input type="search" id="search" name="search" placeholder="Encontre uma receita...">
-            <i class="fas fa-search search-icon" onclick="searchRecipe()"></i>
-        </div>
+        <form method="GET" action="../exibir-receita/pesquisa-receita.php">
+            <div class="search-box">
+                <input type="search" id="search" name="search" placeholder="Encontre uma receita...">
+                <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+ 
 
         <!-- Contêiner do perfil com opções de login/cadastro -->
         <div class="perfil-container">

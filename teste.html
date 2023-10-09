@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Receitas</title>
+</head>
+<body>
+    <h1>Pesquisa de Receitas</h1>
+
+    <!-- Formulário de pesquisa -->
+    <form id="recipeSearchForm">
+        <label for="recipeTitle">Título da Receita:</label>
+        <input type="text" id="recipeTitle" placeholder="Digite o título da receita">
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <!-- Div para exibir resultados -->
+    <div id="recipeResults">
+        <!-- Os resultados da pesquisa serão exibidos aqui -->
+    </div>
+
+    <script>
+        // Evento de envio do formulário
+        document.getElementById("recipeSearchForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita o envio do formulário padrão
+
+            // Obtém o título da receita a partir do input
+            const recipeTitle = document.getElementById("recipeTitle").value;
+
+            // Faz a solicitação à API local usando o título da receita e a porta 80 (padrão do XAMPP)
+            fetch(`http://localhost/search/${encodeURIComponent(recipeTitle)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Exibe os resultados na div de resultados
+                    const recipeResultsDiv = document.getElementById("recipeResults");
+                    recipeResultsDiv.innerHTML = ""; // Limpa resultados anteriores
+
+                    if (data && data.length > 0) {
+                        data.forEach(recipe => {
+                            // Cria um elemento de link para cada receita encontrada
+                            const recipeLink = document.createElement("a");
+                            recipeLink.href = `http://localhost/recipe/${recipe.id}`;
+                            recipeLink.textContent = recipe.title;
+                            recipeResultsDiv.appendChild(recipeLink);
+                            recipeResultsDiv.appendChild(document.createElement("br")); // Quebra de linha
+                        });
+                    } else {
+                        recipeResultsDiv.textContent = "Nenhuma receita encontrada.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro na solicitação à API:", error);
+                });
+        });
+    </script>
+</body>
+</html>

@@ -36,11 +36,6 @@
     </header>
 
     <!-- Seção do Cadastro de Receitas -->
-    <!--<div class="container-geral"> -->
-    <!--<div class="container-geral">  -->
-    <!-- Container do Cadastro de Receitas -->
-    <!--  <div class="cadastro-container"> -->
-    <!--<div class="h2"><h2>Cadastro de Receitas</h2></div>-->
     </br>
     <form method="POST" action="processar-receita.php" enctype="multipart/form-data">
         <!-- Campo do nome da receita -->
