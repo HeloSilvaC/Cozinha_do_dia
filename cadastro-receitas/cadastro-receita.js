@@ -110,26 +110,4 @@ document.addEventListener("DOMContentLoaded", function () {
         modoPreparoLista.appendChild(novoPasso);
     });
 
-    // JavaScript para atualizar a visualização das imagens
-    const inputImagemReceita = document.getElementById("imagem-receita");
-    const imagemPreviewContainer = document.querySelector(".imagem-preview-container");
-
-    inputImagemReceita.addEventListener("change", function () {
-        imagemPreviewContainer.innerHTML = ""; // Limpar a visualização atual
-
-        for (const file of inputImagemReceita.files) {
-            const imagemPreview = document.createElement("img");
-            imagemPreview.classList.add("imagem-preview");
-
-            // Mostrar a imagem selecionada
-            const reader = new FileReader();
-            reader.onload = function () {
-                imagemPreview.src = reader.result;
-            };
-            reader.readAsDataURL(file);
-
-            imagemPreviewContainer.appendChild(imagemPreview);
-        }
-    });
-
 });

@@ -15,9 +15,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #DF901A;
-    padding: 5px;
     width: auto;
-    height: 80px;
+    height: auto;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
 }
@@ -25,7 +24,7 @@ body {
 .header h1 {
     color: white;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
+    font-size: 50px;
     font-weight: 400;
     text-align: center;
     transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -42,7 +41,7 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: 900px;
-    margin: 30px auto;
+    margin: 12px auto;
 }
 
 /*contêiner do formulário de cadastro e login*/
@@ -73,10 +72,10 @@ body {
     src: url('path/to/Horizon.ttf') format('truetype');
 }
 
-.cadastro-container h2 {
+.cadastro-container h2, .login-container h2{
     color: #DF901A;
     font-family: 'Horizon';
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 20px;
 }
 
@@ -97,9 +96,9 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="tel"] {
+input[type="tel"]{
     font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
+    font-size: 15px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -203,25 +202,6 @@ input[type="submit"]:hover {
 }
 
 
-.login-container h2 {
-    color: #DF901A;
-    font-family: 'Horizon';
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-/*campos de entrada do formulário de login*/
-.login-container input[type="email"],
-.login-container input[type="password"] {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
 /* Estilos para o rodapé */
 .footer {
     bottom: 0;
@@ -233,31 +213,25 @@ input[type="submit"]:hover {
     font-family: 'Roboto Mono', monospace;
 }
 
-
 .captcha-container {
+    background-color: transparent;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 5px;
+    flex-wrap: nowrap;
 }
 
-.captcha-input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.captcha-input {
-    font-family: 'Roboto Mono', monospace;
-    margin-top: 8px;
-    font-size: 14px;
-    width: 200px;
-    padding: 8px;
+.captcha-input{
+    width: 100%;
     margin-left: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-top: 10px;
 }
 
-.refresh-captcha{
+#refresh-captcha{
+  margin-left: 10px;
+}
 
+.fa{
+    background-color: transparent;
 }

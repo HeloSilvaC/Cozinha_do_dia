@@ -73,12 +73,8 @@ session_start();
                 </div>
 
                 <div class="captcha-container">
-                    <div class="captcha-image-container">
                         <img src="captcha.php" alt="Imagem do Captcha" class="captcha-image" id="captcha-image">
-                    </div>
-                    <div class="captcha-input-container">
                         <input type="text" name="captcha" class="captcha-input" placeholder="Digite o Captcha" required>
-                    </div>
                     <button type="button" id="refresh-captcha">
                         <i class="fa fa-refresh"></i>
                     </button>

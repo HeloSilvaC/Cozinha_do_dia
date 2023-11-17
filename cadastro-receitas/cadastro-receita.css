@@ -17,7 +17,6 @@ body {
     background-color: #DF901A;
     padding: 5px;
     width: auto;
-    height: 80px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
 }
@@ -25,7 +24,7 @@ body {
 .header h1 {
     color: white;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
+    font-size: 30px;
     font-weight: 400;
     text-align: left;
     transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -43,7 +42,7 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    
+
 }
 
 .cadastro-container {
@@ -62,25 +61,30 @@ body {
     text-align: center;
 }
 
-.container-direita{
-    flex-basis: calc(50% - 10px); /* Defina a largura de cada container (50% - espaço entre eles) */
+.container-direita {
+    flex-basis: calc(50% - 10px);
+    /* Defina a largura de cada container (50% - espaço entre eles) */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px; /* Adicione margem inferior para espaçamento */
+    margin-bottom: 10px;
+    /* Adicione margem inferior para espaçamento */
     padding: 20px;
     margin-top: 10px;
     text-align: center;
-   
-   
+
+
 }
-.container-direita b{
+
+.container-direita b {
     color: #DF901A;
-    font-family: 'Roboto Mono', monospace;;
+    font-family: 'Roboto Mono', monospace;
+    ;
     text-align: center;
     font-size: 16px;
 }
-.h2{
+
+.h2 {
     font: optional;
     text-align: center;
 }
@@ -106,29 +110,28 @@ label {
 }
 
 fieldset {
-    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
-    width: 90%;
+    width: 130%;
 }
 
-.upload-img{
+.upload-img {
     text-align: center;
 
 }
 
 .legend {
-    text-align: center;
+    text-align: left;
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
     font-size: 18px;
     color: #DF901A;
     margin-bottom: 10px;
-   
+
 }
 
 input[type="text"],
@@ -146,7 +149,8 @@ select {
 
 /* Botões */
 #btn-adicionar-ingrediente,
-#btn-adicionar-passo {
+#btn-adicionar-passo,
+#btn-cadastrar {
     background-color: #DF901A;
     color: #fff;
     font-family: 'Roboto Mono', monospace;
@@ -164,19 +168,11 @@ select {
     margin: 0 auto;
 }
 
-#btn-cadastrar {
-    background-color: #DF901A;
-    color: #fff;
-    font-family: 'Roboto Mono', monospace;
-    border: none;
-    font-size: 15px;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    padding: 10px;
-    border-radius: 5px;
+.container-cadastro {
+
+    display: grid;
+    place-items: center;
+
 }
 
 .btn-remover {
@@ -298,21 +294,4 @@ select {
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;
-}
-
-/* Adicione estilos CSS para a visualização das imagens */
-.imagem-preview-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.imagem-preview {
-    margin-left: 10px;
-    max-width: 200px;
-    max-height: 200px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
 }

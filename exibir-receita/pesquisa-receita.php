@@ -1,12 +1,3 @@
-<?php
-$host = "localhost";
-$usuario = "root";
-$senha = "";
-$banco = "cozinha_do_dia";
-
-$con = new mysqli($host, $usuario, $senha, $banco);
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -18,61 +9,78 @@ $con = new mysqli($host, $usuario, $senha, $banco);
 
 <body>
 
-    <!-- Seção do Cabeçalho -->
     <header class="header">
         <a href="../index/index.php" style="text-decoration: none;">
             <h1 data-text="COZINHA DO DIA">CADASTRO DE RECEITAS</h1>
         </a>
     </header>
+
     <?php
-    if (isset($_GET['search'])) {
-        $termoPesquisa = $_GET['search'];
+    // Inclua o arquivo de conexão com o banco de dados
+    include "../entrar/conectar-bd.php";
 
-        // Consulta SQL para buscar receitas com base no termo de pesquisa
-        $sqlPesquisa = "SELECT * FROM receitas WHERE nome LIKE '%$termoPesquisa%'";
-        $resultPesquisa = $con->query($sqlPesquisa);
+    // Verifica se um ID de receita foi fornecido na URL
+    if (isset($_GET['id'])) {
+        $receitaId = $_GET['id'];
 
-        // Verifique se a pesquisa retornou resultados
-        if ($resultPesquisa->num_rows > 0) {
-            echo "<div class='resultados-pesquisa'>";
+        // Consulta SQL para obter os detalhes da receita
+        $sqlReceita = "SELECT * FROM receitas WHERE id = $receitaId";
+        $resultReceita = $con->query($sqlReceita);
 
-            while ($rowReceita = $resultPesquisa->fetch_assoc()) {
-                // Exiba as informações da receita dentro do loop
-                echo "<div class='resultado'>";
-                echo "<h3>{$rowReceita['nome']}</h3>";
-                echo "<p>Tempo de Preparo: {$rowReceita['tempo_preparo']} minutos</p>";
-                echo "<p>Porções: {$rowReceita['porcoes']}</p>";
-                echo "<p>Categoria: {$rowReceita['categoria']}</p>";
+        // Verifica se a consulta retornou resultados
+        if ($resultReceita->num_rows > 0) {
+            $rowReceita = $resultReceita->fetch_assoc();
 
-                // Consulta SQL para obter ingredientes da receita
-                $sqlIngredientes = "SELECT * FROM ingredientes WHERE receita_id = {$rowReceita['id']}";
-                $resultIngredientes = $con->query($sqlIngredientes);
+            echo "<div class='resultado'>";
 
-                echo "<h3>Ingredientes:</h3>";
-                echo "<ul class='lista-ingredientes'>";
-                while ($rowIngrediente = $resultIngredientes->fetch_assoc()) {
-                    echo "<li>{$rowIngrediente['nome']} - {$rowIngrediente['quantidade']} {$rowIngrediente['unidade']}</li>";
-                }
-                echo "</ul>";
+            // Consulta SQL para obter a imagem da receita
+            $sqlImagem = "SELECT filename FROM image WHERE receita_id = $receitaId";
+            $resultImagem = $con->query($sqlImagem);
 
-                // Consulta SQL para obter o modo de preparo da receita
-                $sqlModoPreparo = "SELECT * FROM modo_preparo WHERE receita_id = {$rowReceita['id']} ORDER BY ordem";
-                $resultModoPreparo = $con->query($sqlModoPreparo);
-
-                echo "<h3>Modo de Preparo:</h3>";
-                echo "<ol class='lista-passos'>";
-                while ($rowPasso = $resultModoPreparo->fetch_assoc()) {
-                    echo "<li>{$rowPasso['passo']}</li>";
-                }
-                echo "</ol>";
-
-                echo "</div>"; // Feche a div 'resultado'
+            if ($resultImagem->num_rows > 0) {
+                $rowImagem = $resultImagem->fetch_assoc();
+                $imagemPath = "../imagem/" . $rowImagem['filename'];
+                echo "<img src='$imagemPath' alt='Imagem da Receita' style='max-width: 300px; max-height: 200px;'>";
             }
 
-            echo "</div>"; // Feche a div 'resultados-pesquisa'
+            echo "<div class='principal'>";
+            echo "<h2>{$rowReceita['nome']}</h2>";
+            echo "<p><b>Tempo de Preparo:</b> {$rowReceita['tempo_preparo']} minutos</p>";
+            echo "<p><b>Porções:</b> {$rowReceita['porcoes']}</p>";
+            echo "<p><b>Categoria:</b> {$rowReceita['categoria']}</p>";
+            echo "</div>";
+
+            // Consulta SQL para obter ingredientes da receita
+            $sqlIngredientes = "SELECT * FROM ingredientes WHERE receita_id = $receitaId";
+            $resultIngredientes = $con->query($sqlIngredientes);
+
+            echo "<div class='ingredientes-receita'>";
+            echo "<h3>Ingredientes:</h3>";
+            echo "<ul>";
+            while ($rowIngrediente = $resultIngredientes->fetch_assoc()) {
+                echo "<li>{$rowIngrediente['nome']} - {$rowIngrediente['quantidade']} {$rowIngrediente['unidade']}</li>";
+            }
+            echo "</ul>";
+            echo "</div>";
+
+            // Consulta SQL para obter o modo de preparo da receita
+            $sqlModoPreparo = "SELECT * FROM modo_preparo WHERE receita_id = $receitaId ORDER BY ordem";
+            $resultModoPreparo = $con->query($sqlModoPreparo);
+
+            echo "<div class='modo-preparo'>";
+            echo "<h3>Modo de Preparo:</h3>";
+            echo "<ol>";
+            while ($rowPasso = $resultModoPreparo->fetch_assoc()) {
+                echo "<li>{$rowPasso['passo']}</li>";
+            }
+            echo "</ol>";
+            echo "</div>";
+            echo "</div>";
         } else {
-            echo "<p>Nenhum resultado encontrado para \"$termoPesquisa\".</p>";
+            echo "<p>Receita não encontrada.</p>";
         }
+    } else {
+        echo "<p>ID de receita não fornecido.</p>";
     }
 
     // Feche a conexão com o banco de dados

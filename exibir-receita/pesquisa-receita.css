@@ -4,7 +4,6 @@ body {
 
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -38,64 +37,54 @@ body {
 
 /* Estilo dos resultados da pesquisa */
 .resultados-pesquisa {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     padding: 20px;
 }
 
 .resultado {
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
     border-radius: 5px;
     padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    flex-basis: calc(33.33% - 20px); /* Distribuição em 3 colunas com margens */
-    margin-right: 20px;
-    box-sizing: border-box;
 }
 
 .resultado h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    color: black;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    white-space: nowrap;
 }
 
-.resultado p {
-    margin: 0;
-    font-size: 14px;
-    color: #333;
+.principal h2{
+    font-size: 44px;
+    text-align: center;
+    color: #DF901A;
 }
 
-/* Estilo da lista de ingredientes */
-.lista-ingredientes {
-    list-style-type: none;
-    padding: 0;
+.ingredientes-receita h3, .modo-preparo h3{
+    font-size: 30px;
 }
 
-.lista-ingredientes li {
-    font-size: 14px;
-    margin-bottom: 5px;
+.principal, .ingredientes-receita, .modo-preparo{
+    color: black;
+    font-size: 15px;
+    padding: 15px;
+    font-family: 'Roboto Mono', monospace;
 }
 
-/* Estilo da lista de passos de preparo */
-.lista-passos {
+.principal li, .ingredientes-receita li{
+    list-style-type:disc;
+}
+
+.modo-preparo li{
     list-style-type: decimal;
-    padding: 0;
 }
-
-.lista-passos li {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
 
 .footer {
-
     bottom: 0;
     width: 100%;
     background-color: #DF901A;
-    padding: 15px;
+    padding: 40px;
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;

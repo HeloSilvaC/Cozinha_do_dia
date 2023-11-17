@@ -49,7 +49,7 @@ body {
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-right: 15px;
-    font-size: 18px;
+    font-size: 15px;
     padding: 8px 40px;
     text-align: left;
     width: auto;
@@ -59,10 +59,9 @@ body {
 
 /*ícone de busca*/
 .fa-search {
-    position: absolute;
     left: 16px;
     top: 50%;
-    transform: translateY(-50%);
+    background-color: transparent;
     font-size: 18px;
 }
 
@@ -78,6 +77,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     left: 10px;
+    background-color: transparent;
+    border-color: tr;
 }
 
 /*Remove o ícone de "x" para limpar a pesquisa*/
