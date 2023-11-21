@@ -69,6 +69,7 @@ body {
 .search-box {
     position: relative;
     margin-left: 500px;
+    background-color: none;
 }
 
 /*contêiner do ícone de busca*/
@@ -77,8 +78,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     left: 10px;
-    background-color: transparent;
-    border-color: tr;
+    background-color: none;
 }
 
 /*Remove o ícone de "x" para limpar a pesquisa*/

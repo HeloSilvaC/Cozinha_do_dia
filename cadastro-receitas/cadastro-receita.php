@@ -11,13 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="cadastro-receita.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Cadastro de Receitas - Cozinha do Dia</title>
 </head>
 
 <style>
     .thumbnail {
-        max-width: 100px;
-        max-height: 100px;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
         margin: 5px;
         border: 1px solid #ddd;
         border-radius: 4px;
@@ -39,122 +41,140 @@
     </header>
 
     <!-- Seção do Cadastro de Receitas -->
-    <div class="container-cadastro">
-        <form method="POST" action="processar-receita.php" enctype="multipart/form-data">
+
+    <form method="POST" action="processar-receita.php" enctype="multipart/form-data" class="container-cadastro">
+        <!-- Campo das imagens da receita -->
+        <div class="container-cadastro-esquerda">
+            <label for="imagens-receita">
+                <p class="legend">Imagens da Receita:</p>
+            </label>
+            <input type="file" id="imagens-receita" name="uploadfile" multiple="multiple">
+            <div id="visualizacao"></div>
+        </div>
+        <div class="container-cadastro-direita">
             <!-- Campo do nome da receita -->
-            <fieldset class="ingredientes">
-                <p class="legend">Nome da Receita:</p>
-                <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
+            <p class="legend">Nome da Receita:</p>
+            <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
 
-                <!-- Grupo de campos dos ingredientes -->
-                <p class="legend">Ingredientes</p>
-                <div class="ingredientes-container">
-                    <div class="ingrediente">
-                        <!-- Campo do nome do ingrediente -->
-                        <input type="text" id="nome-ingrediente" name="ingredientes[]" placeholder="Nome do ingrediente" required>
+            <!-- Grupo de campos dos ingredientes -->
+            <p class="legend">Ingredientes</p>
+            <div class="ingredientes-container">
+                <div class="ingrediente">
+                    <!-- Campo do nome do ingrediente -->
+                    <input type="text" id="nome-ingrediente" name="ingredientes[]" placeholder="Nome do ingrediente" required>
 
-                        <!-- Campo da quantidade do ingrediente -->
-                        <input type="number" name="quantidades[]" placeholder="Quantidade" required min="0">
+                    <!-- Campo da quantidade do ingrediente -->
+                    <input type="number" name="quantidades[]" placeholder="Quantidade" required min="0">
 
-                        <!-- Campo da unidade de medida -->
-                        <select name="unidades[]" required>
-                            <option value="" disabled selected>Escolher unidade</option>
-                            <option value="g">grama(s)</option>
-                            <option value="kg">quilograma(s)</option>
-                            <option value="ml">mililitro(s)</option>
-                            <option value="l">litro(s)</option>
-                            <option value="un">unidade(s)</option>
-                        </select>
+                    <!-- Campo da unidade de medida -->
+                    <select name="unidades[]" required>
+                        <option value="" disabled selected>Escolher unidade</option>
+                        <option value="g">grama(s)</option>
+                        <option value="kg">quilograma(s)</option>
+                        <option value="ml">mililitro(s)</option>
+                        <option value="l">litro(s)</option>
+                        <option value="un">unidade(s)</option>
+                    </select>
 
-                        <button type="button" class="btn-remover">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </div>
+                    <button type="button" class="btn-remover">
+                        <i class="fa fa-trash"></i>
+                    </button>
                 </div>
-                <button type="button" id="btn-adicionar-ingrediente">Adicionar Novo Ingrediente</button>
+            </div>
+            <button type="button" id="btn-adicionar-ingrediente">Adicionar Novo Ingrediente</button>
 
-                <!-- Grupo de campos do modo de preparo -->
-                <p class="legend">Modo de Preparo</p>
-                <ol id="modo-preparo-lista">
-                    <!-- Incluí apenas um passo inicial -->
-                    <li>
-                        <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
-                        <button type="button" class="btn-remover">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </li>
-                </ol>
-                <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
+            <!-- Grupo de campos do modo de preparo -->
+            <p class="legend">Modo de Preparo</p>
+            <ol id="modo-preparo-lista">
+                <!-- Incluí apenas um passo inicial -->
+                <li>
+                    <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
+                    <button type="button" class="btn-remover">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </li>
+            </ol>
+            <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
 
-                <!-- Campo do tempo de preparo e das porções -->
-                <div class="tempo-porcoes-container">
-                    <div class="tempo-preparo">
-                        <p class="legend">Tempo de Preparo (min):</p>
-                        <input type="number" id="tempo-preparo" name="tempo-preparo" required class="input-number" min="0">
-                    </div>
-
-                    <div class="porcoes">
-                        <p class="legend">Porções:</p>
-                        <input type="number" id="porcoes" name="porcoes" required class="input-number" min="0">
-                    </div>
+            <!-- Campo do tempo de preparo e das porções -->
+            <div class="tempo-porcoes-container">
+                <div class="tempo-preparo">
+                    <p class="legend">Tempo de Preparo (min):</p>
+                    <input type="number" id="tempo-preparo" name="tempo-preparo" required class="input-number" min="0">
                 </div>
 
-                <!-- Campo da categoria -->
-                <p class="legend">Categoria:</p>
-                <select id="categoria" name="categoria" required>
-                    <option value="massas">Massas</option>
-                    <option value="carnes">Carnes</option>
-                    <option value="vegetariana">Vegetariana</option>
-                    <option value="sobremesas">Sobremesas</option>
-                </select>
+                <div class="porcoes">
+                    <p class="legend">Porções:</p>
+                    <input type="number" id="porcoes" name="porcoes" required class="input-number" min="0">
+                </div>
+            </div>
 
-                <form action="" method="post" enctype="multipart/form-data">
-                    <!-- Campo das imagens da receita -->
-                    <label for="imagens-receita"><b>Imagens da Receita:</b></label>
-                    <input type="file" id="imagens-receita" name="uploadfile" multiple="multiple">
-                    <div id="visualizacao"></div>
-                </form>
+            <!-- Campo da categoria -->
+            <p class="legend">Categoria:</p>
+            <select id="categoria" name="categoria" required>
+                <option value="massas">Massas</option>
+                <option value="carnes">Carnes</option>
+                <option value="vegetariana">Vegetariana</option>
+                <option value="sobremesas">Sobremesas</option>
+            </select>
 
-                <!-- Botão de submit -->
-                <input type="submit" id="btn-cadastrar" value="Cadastrar Receita">
-            </fieldset>
-        </form>
-
-    </div>
+            <!-- Botão de submit -->
+            <button type="submit" id="btn-cadastrar">Cadastrar receita</button>
+        </div>
+    </form>
 
     <footer class="footer">
         <p>&copy; <?php echo date("Y"); ?> Cozinha do dia.</p>
     </footer>
 
     <script src="cadastro-receita.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
     <script>
-        document.getElementById('imagens-receita').addEventListener('change', function(event) {
-            var visualizacao = document.getElementById('visualizacao');
-
-            for (var i = 0; i < event.target.files.length; i++) {
-                var file = event.target.files[i];
-                var imageType = /image.*/;
-
-                if (!file.type.match(imageType)) {
-                    continue;
-                }
-
-                var img = document.createElement('img');
-                img.classList.add('thumbnail');
-                img.file = file;
-                visualizacao.appendChild(img);
-
-                var reader = new FileReader();
-                reader.onload = (function(aImg) {
-                    return function(e) {
-                        aImg.src = e.target.result;
-                    };
-                })(img);
-
-                reader.readAsDataURL(file);
+        <?php if (isset($_GET['mensagem'])) { ?>
+            if ("<?= $_GET['mensagem'] ?>" == "true") {
+                Swal.fire({
+                    title: "Receita cadastrada com sucesso!",
+                    icon: 'success',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        Swal.getPopup().style.backgroundColor = '#fff';
+                        Swal.getPopup().style.fontFamily = 'Roboto Mono';
+                        Swal.getPopup().style.fontSize = '15px';
+                        Swal.getPopup().style.color = '#DF901A';
+                        Swal.getPopup().style.borderColor = '#ccc';
+                    },
+                    willClose: () => {
+                        window.location.href = '../index/index.php';
+                    }
+                });
+            } else if ("<?= $_GET['mensagem'] ?>" == "false") {
+                Swal.fire({
+                    title: "Erro ao cadastrar a receita!",
+                    icon: 'error',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        Swal.getPopup().style.backgroundColor = '#fff';
+                        Swal.getPopup().style.fontFamily = 'Roboto Mono';
+                        Swal.getPopup().style.fontSize = '15px';
+                        Swal.getPopup().style.color = '#DF901A';
+                        Swal.getPopup().style.borderColor = '#ccc';
+                    },
+                    willClose: () => {
+                        window.location.href = '../index/index.php';
+                    }
+                });
             }
-        });
+        <?php } ?>
     </script>
+
 </body>
 
 </html>

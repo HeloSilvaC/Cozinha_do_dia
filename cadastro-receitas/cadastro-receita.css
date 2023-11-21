@@ -1,4 +1,4 @@
-/*geral*/
+/* Reset e configurações gerais */
 body {
     background-color: #EEEEEE;
 }
@@ -9,7 +9,7 @@ body {
     box-sizing: border-box;
 }
 
-/*cabeçalho*/
+/* Cabeçalho */
 .header {
     display: flex;
     justify-content: center;
@@ -36,69 +36,38 @@ body {
     transform: scale(1.01);
 }
 
-
-/* CSS para a estrutura flexbox */
-.container-geral {
+.container-cadastro {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-
-}
-
-.cadastro-container {
-    flex-basis: calc(50% - 10px);
-    width: 48%;
-    margin: 10px;
+    background-color: #ffffff;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.cadastro-container h2 {
-    color: #DF901A;
-    font-family: 'Horizon';
-    text-align: center;
-}
-
-.container-direita {
-    flex-basis: calc(50% - 10px);
-    /* Defina a largura de cada container (50% - espaço entre eles) */
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-    /* Adicione margem inferior para espaçamento */
-    padding: 20px;
-    margin-top: 10px;
-    text-align: center;
-
-
-}
-
-.container-direita b {
-    color: #DF901A;
-    font-family: 'Roboto Mono', monospace;
-    ;
-    text-align: center;
-    font-size: 16px;
-}
-
-.h2 {
-    font: optional;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
+    width: auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 50px;
+    height: auto;
+    flex-direction: row;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-form b {
-    color: #DF901A;
-    font-size: 18px;
+.container-cadastro-direita {
+    width: 48%;
+    /* Defina a largura desejada para a parte direita */
+
+}
+
+.container-cadastro-esquerda {
+    width: 48%;
+
+}
+
+.legend {
     font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #DF901A;
     text-align: left;
 }
 
@@ -106,45 +75,6 @@ label {
     font-family: 'Roboto Mono', monospace;
     font-weight: 300;
     font-size: 10px;
-    margin-bottom: 5px;
-}
-
-fieldset {
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
-    width: 130%;
-}
-
-.upload-img {
-    text-align: center;
-
-}
-
-.legend {
-    text-align: left;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
-    font-size: 18px;
-    color: #DF901A;
-    margin-bottom: 10px;
-
-}
-
-input[type="text"],
-input[type="number"],
-textarea,
-select {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 12px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 90%;
 }
 
 /* Botões */
@@ -154,7 +84,6 @@ select {
     background-color: #DF901A;
     color: #fff;
     font-family: 'Roboto Mono', monospace;
-    border: none;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -168,13 +97,7 @@ select {
     margin: 0 auto;
 }
 
-.container-cadastro {
-
-    display: grid;
-    place-items: center;
-
-}
-
+/* Botão Remover */
 .btn-remover {
     color: #DF901A;
     background-color: transparent;
@@ -191,8 +114,7 @@ select {
     transform: scale(1.01);
 }
 
-
-/*ingredientes e modo de preparo*/
+/* Ingredientes e Modo de Preparo */
 .ingrediente,
 #modo-preparo-lista li {
     display: flex;
@@ -200,10 +122,14 @@ select {
     margin-bottom: 10px;
 }
 
-.ingrediente input[type="text"],
-.ingrediente input[type="number"],
-.ingrediente select {
-    margin-right: 10px;
+input,
+select {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 /* Container para Tempo de Preparo e Porções */
@@ -223,70 +149,10 @@ select {
 .tempo-preparo,
 .porcoes {
     width: 48%;
-    /* Define o tamanho desejado para os campos */
-}
-
-
-
-/*contêiner de imagens*/
-.imagens-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 600px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0.2, 0.2, 0.2, 0.2);
-    padding: 20px;
-}
-
-.imagens-container label {
-    flex: 1;
-    text-align: center;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    color: #DF901A;
-    margin-bottom: 5px;
-}
-
-.imagens-container input[type="file"] {
-    flex: 2;
-    margin: 0 auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 12px;
-    width: 90%;
-}
-
-.imagens-container b {
-    color: #DF901A;
-    font-size: 15px;
-    font-family: 'Roboto Mono', monospace;
-}
-
-.imagens-container button {
-    margin-left: 10px;
-    margin-right: 10px;
-    color: #DF901A;
-    background-color: transparent;
-    border: none;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.imagens-container button:hover {
-    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
-    transform: scale(1.01);
 }
 
 /* Rodapé */
 .footer {
-
     bottom: 0;
     width: 100%;
     background-color: #DF901A;
