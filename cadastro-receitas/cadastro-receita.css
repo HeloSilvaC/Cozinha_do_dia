@@ -1,0 +1,200 @@
+/* Reset e configurações gerais */
+body {
+    background-color: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DF901A;
+    padding: 5px;
+    width: auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    height: 50px;
+}
+
+.header h1 {
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+.container-cadastro {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 20px;
+    width: auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    min-height: calc(100vh - 100px);
+    height: auto;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.container-cadastro-direita {
+    width: 48%;
+
+}
+
+.container-cadastro-esquerda {
+    width: 48%;
+
+}
+
+.receita, 
+.ingredientes, 
+.img-receitas,
+.modoPreparo,
+.tempoPreparo,
+.porcoes,
+.categoria {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #DF901A;
+    text-align: left;
+    white-space: nowrap;
+}
+
+label {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 10px;
+}
+
+/* Botões */
+#btn-adicionar-ingrediente,
+#btn-adicionar-passo,
+#btn-cadastrar {
+    background-color: #DF901A;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+.btn-lixeira{
+margin-left: 20px;
+color: #DF901A;
+border: none;
+}
+
+/* Botão Remover */
+.btn-remover {
+    color: #DF901A;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-remover:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+/* Ingredientes e Modo de Preparo */
+.ingrediente,
+#modo-preparo-lista li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.label-ingrediente{
+    margin-left: 4px;
+    width: 186px;
+}
+
+#nome-ingrediente{
+    width: 270px;
+
+}
+#quantidade-ingrediente{
+    width: 130px;
+}
+
+#organizar{
+    display: grid;
+}
+input,
+select,
+textarea{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 610px;
+}
+
+/* Container para Tempo de Preparo e Porções */
+.tempo-porcoes-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.tempo-porcoes-container label {
+    font-size: 10px;
+}
+
+/* Estilos para Tempo de Preparo e Porções */
+.tempo-preparo,
+.porcoes,
+.categoria {
+    width: 48%;
+    margin-right: auto;
+}
+
+/* Rodapé */
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #DF901A;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    position:relative;
+}
+
+@media (max-width: 600px) {
+    .container-cadastro {
+   flex-direction: column;
+    }
+
+  }

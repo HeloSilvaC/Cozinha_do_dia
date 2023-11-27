@@ -1,0 +1,243 @@
+/*geral*/
+body {
+    background-color: #EEEEEE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*cabeçalho */
+.header {
+    display: inline-block;
+    vertical-align: middle;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #DF901A;
+    padding: 20px;
+    padding-right: 0;
+    width: auto;
+    height: 80px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.header h1 {
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    text-align: left;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    white-space: nowrap;
+}
+
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+/*caixa de busca*/
+#search {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-right: 15px;
+    font-size: 15px;
+    padding: 8px 40px;
+    text-align: left;
+    width: auto;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+
+/*ícone de busca*/
+.fa-search {
+    left: 16px;
+    top: 50%;
+    font-size: 18px;
+}
+
+/*contêiner da caixa de busca*/
+.search-box {
+    position: relative;
+    margin-left: 500px;
+}
+
+/*contêiner do ícone de busca*/
+.search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+/*Remove o ícone de "x" para limpar a pesquisa*/
+#search::-webkit-search-cancel-button {
+    display: none;
+}
+
+#search:focus {
+    outline: none;
+    border-color: #DF901A;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+    border-width: 2px;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+@font-face {
+    font-family: 'Horizon';
+    src: url('path/to/Horizon.otf') format('truetype');
+}
+
+/* Estilos para o rodapé */
+.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #DF901A;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    position: fixed;
+}
+
+/*ícone de perfil e caixa de opções*/
+.perfil-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    margin-right: px;
+    justify-content: flex-end;
+    margin-right: 40px;
+}
+
+/*ícone de perfil*/
+.perfil-container .fas.fa-user-circle {
+    font-size: 40px;
+    color: #fff;
+    transition: box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out;
+    border-radius: 10%;
+}
+
+.perfil-container .fas.fa-user-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 10%;
+}
+
+/*caixa de opções*/
+.opcoes-perfil {
+    margin-top: 5px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #df901a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 5px 10px;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    transition: visibility 0s, opacity 0.2s, box-shadow 0.2s ease-in-out;
+}
+
+/*itens da caixa de opções*/
+.opcoes-perfil ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.opcoes-perfil li {
+    margin-bottom: 5px;
+}
+
+.opcoes-perfil a {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.opcoes-perfil a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.perfil-container:focus-within .opcoes-perfil {
+    visibility: visible;
+    opacity: 1;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Adicione no seu arquivo CSS existente */
+/* Estilos para os cards das receitas */
+.receitas-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 8px;
+}
+
+.receita-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-left: 20px;
+}
+
+.receita-image:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.407);
+}
+
+.receita-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.receita-image p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    font-family: Horizon;
+    font-weight: 300;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.receita-image:hover p {
+    opacity: 1;
+}
+
+/* Ajustes no título da receita */
+.receita-image p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

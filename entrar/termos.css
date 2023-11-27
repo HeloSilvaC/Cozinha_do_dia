@@ -1,0 +1,86 @@
+/* Reset de estilos para garantir consistência */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para o corpo do documento */
+body {
+    background-color: #f3f3f3;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+}
+
+/* Estilos para o cabeçalho */
+.header {
+    background-color: #DF901A;
+    color: white;
+    padding: 5px;
+    width: auto;
+    height: 80px;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.header h1 {
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    font-weight: 400;
+    text-align: center;
+    transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.header h1:hover {
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+}
+
+
+/* Estilos para o container principal */
+.container {
+    max-width: 1110px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilos para as colunas */
+.coluna {
+    width: 48%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+/* Estilos para o rodapé */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #DF901A;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 5px;
+}
+
+/* Estilos para o link de voltar */
+.voltar {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.voltar a {
+    color: #ff0000;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.voltar a:hover {
+    color: #ff7b00;
+}
