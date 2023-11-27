@@ -61,7 +61,6 @@ body {
 .fa-search {
     left: 16px;
     top: 50%;
-    background-color: transparent;
     font-size: 18px;
 }
 
@@ -69,7 +68,6 @@ body {
 .search-box {
     position: relative;
     margin-left: 500px;
-    background-color: none;
 }
 
 /*contêiner do ícone de busca*/
@@ -78,7 +76,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     left: 10px;
-    background-color: none;
+    background-color: transparent;
+    border: none;
 }
 
 /*Remove o ícone de "x" para limpar a pesquisa*/
@@ -101,70 +100,17 @@ body {
     src: url('path/to/Horizon.otf') format('truetype');
 }
 
-/*seção de receitas*/
-#receitas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-top: 20px;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-/*cada card de receita*/
-.card {
-    width: 30%;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    position: relative;
-    margin: 5px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    background-color: #ffffff;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
-    background-color: #f5f5f5;
-}
-
-/*imagem dentro de cada card*/
-.card img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/*texto dentro de cada card*/
-.card-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-family: 'Horizon';
-    color: #fff;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 15px;
-    text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 /* Estilos para o rodapé */
 .footer {
     bottom: 0;
     width: 100%;
     background-color: #DF901A;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;
+    position: fixed;
 }
-
 
 /*ícone de perfil e caixa de opções*/
 .perfil-container {
@@ -203,7 +149,6 @@ body {
     padding: 5px 10px;
     color: #fff;
     font-family: 'Roboto Mono', monospace;
-    font-weight: 300;
     visibility: hidden;
     opacity: 0;
     z-index: 1;
@@ -237,35 +182,62 @@ body {
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.6);
 }
 
-/* Estilos para a imagem dentro do card da panqueca */
-.recipe-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Adicione no seu arquivo CSS existente */
+/* Estilos para os cards das receitas */
+.receitas-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 8px;
+}
+
+.receita-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-left: 20px;
+}
+
+.receita-image:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.407);
+}
+
+.receita-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 1;
+    border-radius: 8px 8px 0 0;
 }
 
-/* Estilos para o vídeo dentro do card da panqueca */
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 75%;
-    z-index: 0;
-}
-
-.video-container iframe {
+.receita-image p {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
+    bottom: 0;
     left: 0;
-    display: none;
-    z-index: 2;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px;
+    font-family: Horizon;
+    font-weight: 300;
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-in-out;
 }
 
-.card:hover .card-text{
-    display: none;
+.receita-image:hover p {
+    opacity: 1;
+}
+
+/* Ajustes no título da receita */
+.receita-image p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

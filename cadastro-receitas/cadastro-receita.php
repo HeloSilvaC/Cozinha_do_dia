@@ -41,33 +41,28 @@
     </header>
 
     <!-- Seção do Cadastro de Receitas -->
+    <form method="POST" action="processar-receita.php" enctype='multipart/form-data' class="container-cadastro">
 
-    <form method="POST" action="processar-receita.php" enctype="multipart/form-data" class="container-cadastro">
-        <!-- Campo das imagens da receita -->
         <div class="container-cadastro-esquerda">
-            <label for="imagens-receita">
-                <p class="legend">Imagens da Receita:</p>
-            </label>
-            <input type="file" id="imagens-receita" name="uploadfile" multiple="multiple">
-            <div id="visualizacao"></div>
-        </div>
-        <div class="container-cadastro-direita">
+
             <!-- Campo do nome da receita -->
-            <p class="legend">Nome da Receita:</p>
+            <p class="receita">Nome da Receita:</p>
             <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
 
             <!-- Grupo de campos dos ingredientes -->
-            <p class="legend">Ingredientes</p>
-            <div class="ingredientes-container">
+            <p class="ingredientes">Ingredientes</p>
+
+            <div id="organizar">
                 <div class="ingrediente">
+
                     <!-- Campo do nome do ingrediente -->
                     <input type="text" id="nome-ingrediente" name="ingredientes[]" placeholder="Nome do ingrediente" required>
 
                     <!-- Campo da quantidade do ingrediente -->
-                    <input type="number" name="quantidades[]" placeholder="Quantidade" required min="0">
+                    <input type="number" id="quantidade-ingrediente" name="quantidades[]" class="label-ingrediente" placeholder="Quantidade" required min="0">
 
                     <!-- Campo da unidade de medida -->
-                    <select name="unidades[]" required>
+                    <select name="unidades[]" class="label-ingrediente" required>
                         <option value="" disabled selected>Escolher unidade</option>
                         <option value="g">grama(s)</option>
                         <option value="kg">quilograma(s)</option>
@@ -81,11 +76,24 @@
                     </button>
                 </div>
             </div>
+
             <button type="button" id="btn-adicionar-ingrediente">Adicionar Novo Ingrediente</button>
+            </br>
+
+            <label for="imagens-receita">
+                <p class="img-receitas">Imagens da Receita:</p>
+            </label>
+            <input type="file" id="imagens-receita" name="uploadfile">
+            <div id="visualizacao"></div>
+        </div>
+
+
+        <div class="container-cadastro-direita">
 
             <!-- Grupo de campos do modo de preparo -->
-            <p class="legend">Modo de Preparo</p>
+            <p class="modoPreparo">Modo de Preparo</p>
             <ol id="modo-preparo-lista">
+
                 <!-- Incluí apenas um passo inicial -->
                 <li>
                     <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
@@ -95,33 +103,36 @@
                 </li>
             </ol>
             <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
+            </br>
 
             <!-- Campo do tempo de preparo e das porções -->
             <div class="tempo-porcoes-container">
                 <div class="tempo-preparo">
-                    <p class="legend">Tempo de Preparo (min):</p>
+                    <p class="tempoPreparo">Tempo de Preparo (min):</p>
                     <input type="number" id="tempo-preparo" name="tempo-preparo" required class="input-number" min="0">
                 </div>
-
+            </div>
+            <div>
                 <div class="porcoes">
-                    <p class="legend">Porções:</p>
+                    <p class="porcoes">Porções:</p>
                     <input type="number" id="porcoes" name="porcoes" required class="input-number" min="0">
                 </div>
+                <div class="categoria">
+                    <p class="categoria">Categoria:</p>
+                    <select id="categoria" name="categoria" required>
+                        <option value="massas">Massas</option>
+                        <option value="carnes">Carnes</option>
+                        <option value="vegetariana">Vegetariana</option>
+                        <option value="sobremesas">Sobremesas</option>
+                    </select>
+                </div>
             </div>
-
-            <!-- Campo da categoria -->
-            <p class="legend">Categoria:</p>
-            <select id="categoria" name="categoria" required>
-                <option value="massas">Massas</option>
-                <option value="carnes">Carnes</option>
-                <option value="vegetariana">Vegetariana</option>
-                <option value="sobremesas">Sobremesas</option>
-            </select>
-
             <!-- Botão de submit -->
             <button type="submit" id="btn-cadastrar">Cadastrar receita</button>
         </div>
     </form>
+
+
 
     <footer class="footer">
         <p>&copy; <?php echo date("Y"); ?> Cozinha do dia.</p>

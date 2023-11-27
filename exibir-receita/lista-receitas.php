@@ -13,7 +13,7 @@ $con = new mysqli($host, $usuario, $senha, $banco);
 <head>
     <meta charset="UTF-8">
     <title>Cozinha do Dia - Lista de Receitas</title>
-    <link rel="stylesheet" type="text/css" href="pesquisa-receita.css">
+    <link rel="stylesheet" type="text/css" href="lista-receitas.css">
 </head>
 
 <body>

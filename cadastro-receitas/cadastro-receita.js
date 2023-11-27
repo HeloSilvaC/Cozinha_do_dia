@@ -1,66 +1,21 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const btnAdicionarIngrediente = document.getElementById("btn-adicionar-ingrediente");
     const btnAdicionarPasso = document.getElementById("btn-adicionar-passo");
     const modoPreparoLista = document.getElementById("modo-preparo-lista");
-    const ingredientesContainer = document.querySelector(".ingredientes-container");
+    const ingredientesContainer = document.getElementById('organizar');
+    // Clonar o primeiro ingrediente para garantir consistência nos estilos
+    const modeloIngrediente = document.querySelector(".ingrediente").cloneNode(true);
 
     // Adicionar um novo campo de ingrediente quando o botão "Adicionar Novo Ingrediente" é clicado
     btnAdicionarIngrediente.addEventListener("click", function () {
-        const novoIngrediente = document.createElement("div");
-        novoIngrediente.classList.add("ingrediente");
+        const novoIngrediente = modeloIngrediente.cloneNode(true);
 
-        // Campo do nome do ingrediente
-        const inputNome = document.createElement("input");
-        inputNome.type = "text";
-        inputNome.name = "ingredientes[]";
-        inputNome.placeholder = "Nome do ingrediente";
-        inputNome.required = true;
-
-        // Campo da quantidade do ingrediente
-        const inputQuantidade = document.createElement("input");
-        inputQuantidade.type = "number";
-        inputQuantidade.name = "quantidades[]";
-        inputQuantidade.placeholder = "Quantidade";
-        inputQuantidade.required = true;
-        inputQuantidade.min = "0";
-
-        // Campo da unidade de medida
-        const selectUnidade = document.createElement("select");
-        selectUnidade.name = "unidades[]";
-        selectUnidade.required = true;
-
-        const optionEscolher = document.createElement("option");
-        optionEscolher.value = "";
-        optionEscolher.disabled = true;
-        optionEscolher.selected = true;
-        optionEscolher.textContent = "Escolher unidade";
-
-        const optionGrama = document.createElement("option");
-        optionGrama.value = "g";
-        optionGrama.textContent = "grama(s)";
-
-        const optionQuilograma = document.createElement("option");
-        optionQuilograma.value = "kg";
-        optionQuilograma.textContent = "quilograma(s)";
-
-        const optionMililitro = document.createElement("option");
-        optionMililitro.value = "ml";
-        optionMililitro.textContent = "mililitro(s)";
-
-        const optionLitro = document.createElement("option");
-        optionLitro.value = "l";
-        optionLitro.textContent = "litro(s)";
-
-        const optionUnidade = document.createElement("option");
-        optionUnidade.value = "un";
-        optionUnidade.textContent = "unidade(s)";
-
-        selectUnidade.appendChild(optionEscolher);
-        selectUnidade.appendChild(optionGrama);
-        selectUnidade.appendChild(optionQuilograma);
-        selectUnidade.appendChild(optionMililitro);
-        selectUnidade.appendChild(optionLitro);
-        selectUnidade.appendChild(optionUnidade);
+        // Remover o botão de remover existente (se houver)
+        const botaoRemoverExistente = novoIngrediente.querySelector(".btn-remover");
+        if (botaoRemoverExistente) {
+            botaoRemoverExistente.remove();
+        }
 
         // Botão de remover o ingrediente
         const btnRemoverIngrediente = document.createElement("button");
@@ -71,13 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
             novoIngrediente.remove();
         });
 
-        novoIngrediente.appendChild(inputNome);
-        novoIngrediente.appendChild(inputQuantidade);
-        novoIngrediente.appendChild(selectUnidade);
+        // Adicionar o novo botão de remover ao novo ingrediente
         novoIngrediente.appendChild(btnRemoverIngrediente);
 
+        // Adicionar o novo ingrediente ao contêiner
         ingredientesContainer.appendChild(novoIngrediente);
     });
+
 
     // Adicionar um novo passo de preparo quando o botão "Adicionar Novo Passo" é clicado
     btnAdicionarPasso.addEventListener("click", function () {

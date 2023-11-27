@@ -201,16 +201,16 @@ input[type="submit"]:hover {
     margin: 0 10px;
 }
 
-
 /* Estilos para o rodapé */
 .footer {
     bottom: 0;
     width: 100%;
     background-color: #DF901A;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;
+    position: fixed;
 }
 
 .captcha-container {

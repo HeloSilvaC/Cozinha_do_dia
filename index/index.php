@@ -43,8 +43,6 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
     <!-- Link para o arquivo de estilo personalizado (CSS) -->
     <link rel="stylesheet" href="../index/index.css">
 
-    <div id="videoPanqueca" style="display: none;"></div>
-
     <title>Cozinha do Dia</title>
 </head>
 
@@ -63,7 +61,7 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
                 <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
             </div>
         </form>
- 
+
 
         <!-- Contêiner do perfil com opções de login/cadastro -->
         <div class="perfil-container">
@@ -81,47 +79,30 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
         </div>
     </header>
 
-    <!-- Seção de Receitas -->
-    <div id="receitas">
-        <!-- Cards de receitas -->
-        <div class="card video-card" onmouseover="playVideo(this);" onmouseout="pauseVideo(this);">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/y1diZ4zsOZg?autoplay=0" allowfullscreen></iframe>
-                <img src="../Imagens/Panqueca.png" alt="Panqueca" class="recipe-image">
-                <!-- Imagem agora dentro do mesmo div -->
-            </div>
-            <div class="card-text">
-                <h1 class="card-title">PANQUECA AMERICANA</h1>
-            </div>
-        </div>
-        <div class="card video-card" onmouseover="playVideo(this);" onmouseout="pauseVideo(this);">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/qzN7zyxxaWQ?autoplay=0" allowfullscreen></iframe>
-                <img src="../Imagens/ovo_frito.png" alt="Ovo frito" class="recipe-image">
-                <!-- Imagem agora dentro do mesmo div -->
-            </div>
-            <div class="card-text">
-                <h1>OVO FRITO</h1>
-            </div>
-        </div>
-        <div class="card video-card" onmouseover="playVideo(this);" onmouseout="pauseVideo(this);">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/sxd0AVcPgbI?autoplay=0" allowfullscreen></iframe>
-                <img src="../Imagens/guacamole.png" alt="Guacamole" class="recipe-image">
-            </div>
-            <div class="card-text">
-                <h1>GUACAMOLE</h1>
-            </div>
-        </div>
-        <div class="card video-card" onmouseover="playVideo(this);" onmouseout="pauseVideo(this);">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/BCBxMZlKfdc?autoplay=0" allowfullscreen></iframe>
-                <img src="../Imagens/salada_de_frutas.png" alt="Salada de frutas" class="recipe-image">
-            </div>
-            <div class="card-text">
-                <h1>SALADA DE FRUTAS</h1>
-            </div>
-        </div>
+    <!-- Seção de Imagens das Receitas -->
+    <!-- Seção de Imagens das Receitas -->
+    <div class="receitas-images">
+        <?php
+        // Conecta ao servidor MySQL
+        include "../entrar/conectar-bd.php";
+
+        // Consulta para obter as últimas 4 receitas com imagens
+        $sqlImagens = "SELECT r.id, r.nome, i.filename FROM receitas r
+        INNER JOIN image i ON r.id = i.receita_id
+        ORDER BY r.id DESC LIMIT 4";
+        $resultImagens = $con->query($sqlImagens);
+
+        if ($resultImagens->num_rows > 0) {
+            while ($rowImagem = $resultImagens->fetch_assoc()) {
+                echo '<div class="receita-image">';
+                echo '<a href="../exibir-receita/pesquisa-receita.php?id=' . $rowImagem["id"] . '">';
+                echo '<img src="../imagem/' . $rowImagem["filename"] . '" alt="' . $rowImagem["nome"] . '">';
+                echo '<p>' . $rowImagem["nome"] . '</p>';
+                echo '</a>';
+                echo '</div>';
+            }
+        }
+        ?>
     </div>
 
     <footer class="footer">
@@ -132,9 +113,8 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
 
     <!-- Script JavaScript -->
     <script>
-
         // Redireciona para receitas.html com o termo de pesquisa na URL
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Obtém o contêiner do perfil
             const perfilContainer = document.querySelector('.perfil-container');
             // Verifica se o usuário está logado
@@ -174,28 +154,6 @@ $nomeUsuario = isset($_SESSION["nomeUsuario"]) ? $_SESSION["nomeUsuario"] : '';
                 `;
             }
         });
-        var isPlaying = false;
-
-        function playVideo(card) {
-            var video = card.querySelector("iframe");
-
-            video.style.display = "block";
-
-            if (!isPlaying) {
-                video.src += "&autoplay=1";
-                isPlaying = true;
-            }
-        }
-
-        function pauseVideo(card) {
-            var video = card.querySelector("iframe");
-
-            video.style.display = "none";
-
-            video.src = video.src.replace("&autoplay=1", "");
-            isPlaying = false;
-        }
-
     </script>
 </body>
 

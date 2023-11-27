@@ -40,7 +40,7 @@
             if ($resultImagem->num_rows > 0) {
                 $rowImagem = $resultImagem->fetch_assoc();
                 $imagemPath = "../imagem/" . $rowImagem['filename'];
-                echo "<img src='$imagemPath' alt='Imagem da Receita' style='max-width: 300px; max-height: 200px;'>";
+                echo "<img src='$imagemPath' alt='Imagem da Receita'>";
             }
 
             echo "<div class='principal'>";

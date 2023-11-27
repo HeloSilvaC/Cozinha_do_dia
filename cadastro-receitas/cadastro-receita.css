@@ -19,6 +19,7 @@ body {
     width: auto;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
+    height: 50px;
 }
 
 .header h1 {
@@ -43,17 +44,15 @@ body {
     padding: 20px;
     width: auto;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 50px;
+    margin: 20px;
+    min-height: calc(100vh - 100px);
     height: auto;
     flex-direction: row;
-    align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .container-cadastro-direita {
     width: 48%;
-    /* Defina a largura desejada para a parte direita */
 
 }
 
@@ -62,13 +61,20 @@ body {
 
 }
 
-.legend {
+.receita, 
+.ingredientes, 
+.img-receitas,
+.modoPreparo,
+.tempoPreparo,
+.porcoes,
+.categoria {
     font-family: 'Roboto Mono', monospace;
     font-size: 20px;
     margin-bottom: 5px;
     font-weight: bold;
     color: #DF901A;
     text-align: left;
+    white-space: nowrap;
 }
 
 label {
@@ -93,8 +99,13 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    margin: 0 auto;
+    width: auto;
+}
+
+.btn-lixeira{
+margin-left: 20px;
+color: #DF901A;
+border: none;
 }
 
 /* Botão Remover */
@@ -122,22 +133,38 @@ label {
     margin-bottom: 10px;
 }
 
+.label-ingrediente{
+    margin-left: 4px;
+    width: 186px;
+}
+
+#nome-ingrediente{
+    width: 270px;
+
+}
+#quantidade-ingrediente{
+    width: 130px;
+}
+
+#organizar{
+    display: grid;
+}
 input,
-select {
+select,
+textarea{
     font-family: 'Roboto Mono', monospace;
     font-size: 15px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
+    width: 610px;
 }
 
 /* Container para Tempo de Preparo e Porções */
 .tempo-porcoes-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 90%;
     margin: 0 auto;
 }
 
@@ -147,8 +174,10 @@ select {
 
 /* Estilos para Tempo de Preparo e Porções */
 .tempo-preparo,
-.porcoes {
+.porcoes,
+.categoria {
     width: 48%;
+    margin-right: auto;
 }
 
 /* Rodapé */
@@ -156,8 +185,16 @@ select {
     bottom: 0;
     width: 100%;
     background-color: #DF901A;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;
+    position:relative;
 }
+
+@media (max-width: 600px) {
+    .container-cadastro {
+   flex-direction: column;
+    }
+
+  }
