@@ -17,15 +17,6 @@ O **Cozinha do Dia** é um projeto que estou trabalhando atualmente. Meu objetiv
 
 Neste momento, estou concentrado na fase de desenvolvimento inicial do projeto. Estou construindo as bases do site, implementando o design e trabalhando nas funcionalidades principais. Novos recursos e melhorias serão adicionados ao longo do tempo.
 
-## 👩‍💻 Como Contribuir
-
-Eu adoraria receber contribuições da comunidade! Se você deseja contribuir com o projeto, siga estas etapas:
-
-1. Faça um fork deste repositório.
-2. Crie um branch para a sua contribuição: `git checkout -b minha-contribuicao`
-3. Faça as alterações e melhorias desejadas.
-4. Envie um pull request.
-
 ## 📧 Contato
 
 Se você tiver alguma dúvida, sugestão ou quiser entrar em contato, você pode:
