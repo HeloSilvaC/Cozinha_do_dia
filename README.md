@@ -13,10 +13,6 @@ O **Cozinha do Dia** é um projeto que estou trabalhando atualmente. Meu objetiv
 - Crie uma conta e faça login para salvar suas receitas favoritas ❤️.
 - Compartilhe suas próprias receitas e inspire outros amantes da culinária 🍴.
 
-## 🚀 Status Atual
-
-Neste momento, estou concentrado na fase de desenvolvimento inicial do projeto. Estou construindo as bases do site, implementando o design e trabalhando nas funcionalidades principais. Novos recursos e melhorias serão adicionados ao longo do tempo.
-
 ## 📧 Contato
 
 Se você tiver alguma dúvida, sugestão ou quiser entrar em contato, você pode:
