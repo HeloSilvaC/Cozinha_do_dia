@@ -1,7 +1,14 @@
 <?php
+
+session_start();
+
+$idUsuario = $_SESSION["id"];
+
 include "../entrar/conectar-bd.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    date_default_timezone_set('America/Sao_Paulo'); 
 
     $nomeReceita = filter_input(INPUT_POST, "nome-receita");
     $ingredientes = $_POST["ingredientes"];
@@ -11,19 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tempoPreparo = $_POST["tempo-preparo"];
     $porcoes = $_POST["porcoes"];
     $categoria = $_POST["categoria"];
+    $data = date("d/m/Y H:i");
 
     $con->begin_transaction();
 
     // Inserir os dados da receita no banco de dados
-    $sql = "INSERT INTO receitas (nome, tempo_preparo, porcoes, categoria) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO receitas (nome, tempo_preparo, porcoes, categoria, id_usuario, data) VALUES (?, ?, ?, ?, ?, ?)";
     $stmtReceita = $con->prepare($sql);
-    $stmtReceita->bind_param("ssis", $nomeReceita, $tempoPreparo, $porcoes, $categoria);
+    $stmtReceita->bind_param("ssisis", $nomeReceita, $tempoPreparo, $porcoes, $categoria, $idUsuario, $data);
     $resultReceita = $stmtReceita->execute();
-
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
 
     if ($resultReceita) {
         $receitaId = $stmtReceita->insert_id;
@@ -35,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cleanedFilename = preg_replace("/[^a-zA-Z0-9.]/", "_", $filename);
             $tempname = $uploadedFiles['tmp_name'];
 
-            // Diretório de destino
             $directoryPath = "C:/xampp/htdocs/Receitas/imagem/";
 
             if (move_uploaded_file($tempname, $directoryPath . $cleanedFilename)) {
@@ -53,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Loop para inserir ingredientes usando uma consulta preparada
-        // Loop para inserir ingredientes usando uma consulta preparada
         for ($i = 0; $i < count($ingredientes); $i++) {
             $sql = "INSERT INTO ingredientes (receita_id, nome, quantidade, unidade) VALUES (?, ?, ?, ?)";
             $stmtIngredientes = $con->prepare($sql);
@@ -67,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $stmtIngredientes->close();
         }
-
 
         // Loop para inserir modo de preparo na ordem correta
         for ($ordem = 0; $ordem < count($modoPreparo); $ordem++) {

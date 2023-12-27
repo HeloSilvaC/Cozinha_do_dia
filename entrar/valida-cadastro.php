@@ -32,11 +32,8 @@ if ($_POST["captcha"] == $_SESSION["palavra"]) {
         header("Location: entrar.php?mensagem=" . urlencode($mensagem));
         exit();
     }
-}
-
-else{
+} else {
     $mensagem = "false-captcha"; // Altere para uma string
     header("Location: entrar.php?mensagem=" . urlencode($mensagem));
     exit();
 }
-?>

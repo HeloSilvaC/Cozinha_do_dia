@@ -49,18 +49,18 @@ body {
     margin-top: 20px;
 }
 
-.container-cadastro-direita {
+.container-editar-direita {
     width: 48%;
 
 }
 
-.container-cadastro-esquerda {
+.container-editar-esquerda {
     width: 48%;
 
 }
 
-.receita, 
-.ingredientes, 
+.receita,
+.ingredientes,
 .img-receitas,
 .modoPreparo,
 .tempoPreparo,
@@ -99,10 +99,10 @@ label {
     width: auto;
 }
 
-.btn-lixeira{
-margin-left: 20px;
-color: #DF901A;
-border: none;
+.btn-lixeira {
+    margin-left: 20px;
+    color: #DF901A;
+    border: none;
 }
 
 .btn-remover {
@@ -128,27 +128,28 @@ border: none;
     margin-bottom: 10px;
 }
 
-.label-ingrediente{
+.label-ingrediente {
     margin-left: 4px;
     width: 186px;
 }
 
-#nome-ingrediente{
+#nome-ingrediente {
     width: 270px;
 
 }
 
 #quantidade-ingrediente{
-    width: 130px;
+    width: 150px;
+    /*130*/
 }
 
-#organizar{
+#organizar {
     display: grid;
 }
 
 input,
 select,
-textarea{
+textarea {
     font-family: 'Roboto Mono', monospace;
     font-size: 15px;
     padding: 8px;
@@ -184,11 +185,11 @@ textarea{
     text-align: center;
     color: white;
     font-family: 'Roboto Mono', monospace;
-    position:relative;
+    position: relative;
 }
 
 @media (max-width: 600px) {
     .container-cadastro {
-   flex-direction: column;
+        flex-direction: column;
     }
 }

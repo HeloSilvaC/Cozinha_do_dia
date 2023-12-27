@@ -43,8 +43,8 @@ body {
 }
 
 img {
-    max-width: 450px; 
-    max-height: 450px; 
+    max-width: 450px;
+    max-height: 450px;
     width: auto;
     height: auto;
     border-radius: 5px;
@@ -76,6 +76,13 @@ img {
     font-family: 'Roboto Mono', monospace;
 }
 
+.data {
+    color: black;
+    font-size: 12px;
+    padding: 15px;
+    font-family: 'Roboto Mono', monospace;
+}
+
 .principal li,
 .ingredientes-receita li {
     list-style-type: disc;
@@ -87,6 +94,29 @@ img {
     list-style-type: decimal;
     margin-left: 32px;
     margin-top: 2px;
+}
+
+.btn {
+    background-color: #DF901A;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 5px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn a{
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    padding: 10px;
+
+}
+
+.btn:hover {
+    background-color: #df6c00; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.391);
 }
 
 .footer {

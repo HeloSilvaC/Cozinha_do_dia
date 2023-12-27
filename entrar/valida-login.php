@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (password_verify($senha_login, $linha['senha'])) {
                 ob_clean();
 
-                // Defina as variáveis de sessão e redirecione
                 $_SESSION["id"] = $linha["id"];
                 $_SESSION["estaLogado"] = true;
                 $_SESSION["nomeUsuario"] = $linha["nome"]; // Obtém o nome do usuário do banco de dados

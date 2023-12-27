@@ -9,17 +9,13 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Links para as fontes do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
-    <!-- Link para o Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Link para o arquivo de estilo personalizado (CSS) -->
     <link rel="stylesheet" href="entrar.css">
-    <!-- Link para o jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Cadastro - Cozinha do Dia</title>
@@ -220,7 +216,6 @@ session_start();
                 captchaImage.src = 'captcha.php?t=' + timestamp; // Adicione o timestamp como parâmetro GET
             }
 
-            // Adicione um ouvinte de evento ao botão "Recarregar Captcha"
             var refreshButton = document.getElementById('refresh-captcha');
             if (refreshButton) {
                 refreshButton.addEventListener('click', function () {
@@ -333,7 +328,6 @@ session_start();
                 }
 
             <?php } ?>
-
 
         }
     </script>

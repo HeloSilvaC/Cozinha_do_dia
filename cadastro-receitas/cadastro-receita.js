@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ingredientesContainer.appendChild(novoIngrediente);
     });
 
-
     // Adicionar um novo passo de preparo quando o botão "Adicionar Novo Passo" é clicado
     btnAdicionarPasso.addEventListener("click", function () {
         const novoPasso = document.createElement("li");
@@ -67,38 +66,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('imagens-receita').addEventListener('change', function (event) {
         var visualizacao = document.getElementById('visualizacao');
-
-        for (var i = 0; i < event.target.files.length; i++) {
-            var file = event.target.files[i];
-            var imageType = /image.*/;
-
-            if (!file.type.match(imageType)) {
-                continue;
-            }
-
-            var container = document.createElement('div'); // Container para a imagem e o botão "X"
+        var file = event.target.files[0];
+    
+        if (file && file.type.startsWith('image')) {
+            var container = document.createElement('div'); 
             container.classList.add('image-container');
-
+    
             var img = document.createElement('img');
             img.classList.add('thumbnail');
             img.src = URL.createObjectURL(file);
-
+    
             var removeButton = document.createElement('button');
             removeButton.type = 'button';
             removeButton.classList.add('btn-remove');
-
-            // Adicionando o ícone "delete" do Google Material Symbols Outlined
+    
             removeButton.innerHTML = '<span class="material-symbols-outlined" style="font-size: 14px; padding: 3px; border-radius: 50%; background: none;">delete</span>';
-
+    
             removeButton.addEventListener('click', function () {
                 container.remove();
             });
-
+    
             container.appendChild(img);
             container.appendChild(removeButton);
-
+    
             visualizacao.appendChild(container);
         }
     });
-
+    
 });

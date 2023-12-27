@@ -16,24 +16,29 @@
     </header>
 
     <?php
-    // Inclua o arquivo de conexão com o banco de dados
+
     include "../entrar/conectar-bd.php";
 
-    // Verifica se um ID de receita foi fornecido na URL
+    session_start();
+
     if (isset($_GET['id'])) {
         $receitaId = $_GET['id'];
 
-        // Consulta SQL para obter os detalhes da receita
         $sqlReceita = "SELECT * FROM receitas WHERE id = $receitaId";
         $resultReceita = $con->query($sqlReceita);
 
-        // Verifica se a consulta retornou resultados
         if ($resultReceita->num_rows > 0) {
             $rowReceita = $resultReceita->fetch_assoc();
 
             echo "<div class='resultado'>";
 
-            // Consulta SQL para obter a imagem da receita
+            echo "<div class='data'>";
+            echo "<p><b>Data de publicação:</b> {$rowReceita['data']}</p></b>";
+            if (isset($rowReceita['data_atualizada']) && $rowReceita['data_atualizada'] != NULL) {
+                echo "<p><b>Data da edição:</b> {$rowReceita['data_atualizada']}</p>";
+            }
+            echo "</div>";
+            
             $sqlImagem = "SELECT filename FROM image WHERE receita_id = $receitaId";
             $resultImagem = $con->query($sqlImagem);
 
@@ -50,7 +55,6 @@
             echo "<p><b>Categoria:</b> {$rowReceita['categoria']}</p>";
             echo "</div>";
 
-            // Consulta SQL para obter ingredientes da receita
             $sqlIngredientes = "SELECT * FROM ingredientes WHERE receita_id = $receitaId";
             $resultIngredientes = $con->query($sqlIngredientes);
 
@@ -63,7 +67,6 @@
             echo "</ul>";
             echo "</div>";
 
-            // Consulta SQL para obter o modo de preparo da receita
             $sqlModoPreparo = "SELECT * FROM modo_preparo WHERE receita_id = $receitaId ORDER BY ordem";
             $resultModoPreparo = $con->query($sqlModoPreparo);
 
@@ -75,6 +78,12 @@
             }
             echo "</ol>";
             echo "</div>";
+
+            if (isset($_SESSION["id"]) && $_SESSION["id"] == $rowReceita['id_usuario']) {
+                echo "<button class='btn'style='text-decoration: none;'><a href='editar-receita.php?id={$receitaId}'>Editar</a></button>";
+                echo "<button class='btn'style='text-decoration: none;'><a href='excluir-receita.php?id={$receitaId}'>Excluir</a></button>";
+            }
+            
             echo "</div>";
         } else {
             echo "<p>Receita não encontrada.</p>";
@@ -83,7 +92,6 @@
         echo "<p>ID de receita não fornecido.</p>";
     }
 
-    // Feche a conexão com o banco de dados
     $con->close();
     ?>
 

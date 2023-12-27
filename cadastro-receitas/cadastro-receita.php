@@ -33,35 +33,29 @@
 </style>
 
 <body>
-    <!-- Seção do Cabeçalho -->
+   
     <header class="header">
         <a href="../index/index.php" style="text-decoration: none;">
             <h1 data-text="COZINHA DO DIA">CADASTRO DE RECEITAS</h1>
         </a>
     </header>
 
-    <!-- Seção do Cadastro de Receitas -->
     <form method="POST" action="processar-receita.php" enctype='multipart/form-data' class="container-cadastro">
 
         <div class="container-cadastro-esquerda">
 
-            <!-- Campo do nome da receita -->
             <p class="receita">Nome da Receita:</p>
             <input type="text" id="nome-receita" name="nome-receita" required class="input-text">
 
-            <!-- Grupo de campos dos ingredientes -->
             <p class="ingredientes">Ingredientes</p>
 
             <div id="organizar">
                 <div class="ingrediente">
 
-                    <!-- Campo do nome do ingrediente -->
                     <input type="text" id="nome-ingrediente" name="ingredientes[]" placeholder="Nome do ingrediente" required>
 
-                    <!-- Campo da quantidade do ingrediente -->
                     <input type="number" id="quantidade-ingrediente" name="quantidades[]" class="label-ingrediente" placeholder="Quantidade" required min="0">
 
-                    <!-- Campo da unidade de medida -->
                     <select name="unidades[]" class="label-ingrediente" required>
                         <option value="" disabled selected>Escolher unidade</option>
                         <option value="g">grama(s)</option>
@@ -90,11 +84,8 @@
 
         <div class="container-cadastro-direita">
 
-            <!-- Grupo de campos do modo de preparo -->
             <p class="modoPreparo">Modo de Preparo</p>
             <ol id="modo-preparo-lista">
-
-                <!-- Incluí apenas um passo inicial -->
                 <li>
                     <textarea name="modo-preparo[]" placeholder="Passo 1" rows="3" required></textarea>
                     <button type="button" class="btn-remover">
@@ -105,18 +96,18 @@
             <button type="button" id="btn-adicionar-passo">Adicionar Novo Passo</button>
             </br>
 
-            <!-- Campo do tempo de preparo e das porções -->
             <div class="tempo-porcoes-container">
                 <div class="tempo-preparo">
                     <p class="tempoPreparo">Tempo de Preparo (min):</p>
                     <input type="number" id="tempo-preparo" name="tempo-preparo" required class="input-number" min="0">
                 </div>
             </div>
-            <div>
+            
                 <div class="porcoes">
                     <p class="porcoes">Porções:</p>
                     <input type="number" id="porcoes" name="porcoes" required class="input-number" min="0">
                 </div>
+                
                 <div class="categoria">
                     <p class="categoria">Categoria:</p>
                     <select id="categoria" name="categoria" required>
@@ -126,13 +117,11 @@
                         <option value="sobremesas">Sobremesas</option>
                     </select>
                 </div>
-            </div>
-            <!-- Botão de submit -->
+
+            
             <button type="submit" id="btn-cadastrar">Cadastrar receita</button>
         </div>
     </form>
-
-
 
     <footer class="footer">
         <p>&copy; <?php echo date("Y"); ?> Cozinha do dia.</p>

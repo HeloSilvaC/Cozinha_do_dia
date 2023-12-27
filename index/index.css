@@ -137,7 +137,7 @@ body {
     border-radius: 10%;
 }
 
-/*caixa de opções*/
+
 .opcoes-perfil {
     margin-top: 5px;
     position: absolute;
@@ -155,7 +155,7 @@ body {
     transition: visibility 0s, opacity 0.2s, box-shadow 0.2s ease-in-out;
 }
 
-/*itens da caixa de opções*/
+
 .opcoes-perfil ul {
     list-style-type: none;
     padding: 0;
